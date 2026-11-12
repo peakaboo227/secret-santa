@@ -1,0 +1,17 @@
+<!-- @dsCard group="Iconography" height=300 subtitle="16 icons · 12 by 12 grid · 24 and 12" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"></head>
+<body>
+<div id="root" data-theme="christmas-night" style="background:var(--page);color:var(--ink);padding:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:10px"></div>
+<script>
+  var P = window.Pawker, h = React.createElement;
+  var names = ["back","forward","close","menu","plus","check","gift","wishlist","link","copy","key","info","manage","lock","calendar","bell"];
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, names.map(function (n) {
+    return h('div', { key: n, style: { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', padding: '12px 6px', background: 'var(--panel)', border: '2px solid var(--border-soft)', borderRadius: 'var(--radius-panel)' } },
+      h('div', { style: { display: 'flex', alignItems: 'center', gap: '12px' } }, h(P.Icon, { name: n, size: 24 }), h('span', { style: { display: 'flex', color: 'var(--action)' } }, h(P.Icon, { name: n }))),
+      h('span', { className: 'label-sm' }, n));
+  })));
+</script>
+</body>
+</html>

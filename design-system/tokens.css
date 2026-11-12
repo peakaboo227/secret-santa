@@ -1,0 +1,191 @@
+/* pawker — generated from tokens.json */
+:root, [data-theme="pawker"] {
+  --page: #FFFDF8;
+  --page-dots: #F3E4C4;
+  --panel: #FFFDF7;
+  --panel-inner: #FFF9EC;
+  --white: #FFFFFF;
+  --bed-rim: #D99B3F;
+  --bed-cushion: #FBEBC6;
+  --bed-ring: #FFF6DF;
+  --bed-drop: rgba(180,145,70,0.18);
+  --border: #E2C489;
+  --border-soft: #F1E2C0;
+  --border-ring: #E7CE97;
+  --border-neutral: #DFC79C;
+  --border-neutral-hover: #CBAE78;
+  --ink: #3A2C1C;
+  --ink-2: #57452F;
+  --ink-muted: #7A6749;
+  --ink-faint: #8F7C5E;
+  --ink-disabled: #A08D6E;
+  --icon-warm: #AD9670;
+  --action: #2C9C93;
+  --action-dark: #23807A;
+  --action-ink: #1B6C67;
+  --action-tint: #CDEAE5;
+  --action-tint-hover: #B6E1DB;
+  --action-border: #96D2CB;
+  --on-action: var(--white);
+  --highlight: #F8DC9A;
+  --accent: #F3AFC1;
+  --confetti: #F7D46A;
+  --warm13-bg: #FBEDE5;
+  --warm13-border: #DFA98F;
+  --warm13-ink: #B0503A;
+  --danger-border: #F0C9C4;
+  --danger-ink: #C2604E;
+  --danger-tint: #FDF0EE;
+  --flat-shadow: #F0E2C4;
+  --scrim: rgba(58,44,28,0.30);
+  --card-paw: #C9A265;
+  --card-empty: #EFE7D6;
+  --card-empty-border: #DCD1BB;
+  --card-empty-paw: #CBBFA8;
+  --react-heart: #EE6F8E;
+  --react-heart-ring: var(--accent);
+  --react-snack: #D9A15F;
+  --react-snack-dark: #C68A4A;
+  --react-snack-ring: #EAD6A8;
+  --react-scratch: #5B8FB9;
+  --react-scratch-ring: #A8C9E4;
+  --react-bell: #E8B93F;
+  --react-bell-dark: #C8912A;
+  --shadow-panel: 0 3px 0 #F0E2C4;
+  --shadow-step: 0 4px 0 #F0E2C4;
+  --shadow-cta: 0 5px 0 #23807A;
+  --shadow-cta-pressed: 0 2px 0 #23807A;
+  --shadow-cta-waiting: 0 5px 0 #DFC79C;
+  --shadow-mark: 0 2px 0 #CDEAE5;
+  --shadow-card: 0 3px 0 rgba(150,110,50,0.22);
+  --shadow-reaction: 0 2px 0 rgba(180,145,70,0.18);
+  --shadow-field-invalid: 0 0 0 4px rgba(176,80,58,0.14);
+  --shadow-overlay: 0 18px 40px rgba(58,44,28,0.18);
+}
+[data-theme="christmas"] {
+  --action: #2F7D4F;
+  --action-dark: #24633E;
+  --action-ink: #1C4F31;
+  --action-tint: #D3EADB;
+  --action-tint-hover: #BFE0CB;
+  --action-border: #9CCBAE;
+  --on-action: var(--white);
+  --highlight: #F5CF6E;
+  --accent: #D6455A;
+  --danger-border: #E5BFB5;
+  --danger-ink: #A8432F;
+  --danger-tint: #FBEFEC;
+  --react-heart-ring: var(--accent);
+  --shadow-cta: 0 5px 0 #24633E;
+  --shadow-cta-pressed: 0 2px 0 #24633E;
+  --shadow-mark: 0 2px 0 #D3EADB;
+}
+:root {
+  --space-2: 2px;
+  --space-3: 3px;
+  --space-4: 4px;
+  --space-7: 7px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-11: 11px;
+  --space-13: 13px;
+  --space-14: 14px;
+  --space-15: 15px;
+  --space-22: 22px;
+  --space-26: 26px;
+  --space-35: 35px;
+  --space-64: 64px;
+  --radius-mark: 6px;
+  --radius-vote-card: 10px;
+  --radius-field: 12px;
+  --radius-note: 14px;
+  --radius-panel: 16px;
+  --radius-step: 20px;
+  --radius-deck: 22px;
+  --radius-door: 24px;
+  --radius-overlay: 26px;
+  --radius-bed: 200px;
+  --radius-pill: 999px;
+  --stroke-chip: 1.5px;
+  --stroke-ui: 2px;
+  --stroke-heavy: 3px;
+  --font-sans: "Merriweather Sans", system-ui, sans-serif;
+  --font-display: "Be Vietnam Pro", "Merriweather Sans", sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-note: "Barlow", "Inter", sans-serif;
+  --font-mono: Monaco, "SFMono-Regular", ui-monospace, Consolas, monospace;
+}
+.hero { font-family: var(--font-display); font-size: 58px; font-weight: 700; line-height: 1; }
+.headline { font-family: var(--font-display); font-size: 27px; font-weight: 700; line-height: 1.15; }
+.numeral { font-family: var(--font-display); font-size: 24px; font-weight: 700; }
+.wordmark { font-family: var(--font-display); font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+.section { font-family: var(--font-display); font-size: 19px; font-weight: 700; }
+.cta { font-family: var(--font-sans); font-size: 16px; font-weight: 700; }
+.field { font-family: var(--font-sans); font-size: 15px; font-weight: 700; }
+.title { font-family: var(--font-sans); font-size: 14px; font-weight: 700; }
+.label { font-family: var(--font-sans); font-size: 13px; font-weight: 700; }
+.label-sm { font-family: var(--font-sans); font-size: 12px; font-weight: 700; }
+.chip { font-family: var(--font-sans); font-size: 11px; font-weight: 700; }
+.body { font-family: var(--font-body); font-size: 15px; font-weight: 400; }
+.body-sm { font-family: var(--font-body); font-size: 14px; font-weight: 400; }
+.note { font-family: var(--font-note); font-size: 11px; font-weight: 400; }
+.eyebrow { font-family: var(--font-note); font-size: 11px; font-weight: 400; letter-spacing: 0.1em; }
+.note-lg { font-family: var(--font-note); font-size: 14px; font-weight: 400; }
+.code { font-family: var(--font-mono); font-size: 13px; font-weight: 700; letter-spacing: 0.16em; }
+.code-lg { font-family: var(--font-mono); font-size: 16px; font-weight: 700; }
+
+/* added: tokens present in tokens.json but missing from the generated css */
+:root, [data-theme="pawker"] {
+  --sheet: var(--panel);
+  --snow: #FFFFFF;
+  --snow-shade: #DCEBE2;
+  --sparkle: #F5CF6E;
+  --sparkle-2: #E8B93F;
+  --tree: #2F7D4F;
+  --tree-dark: #24633E;
+  --trunk: #8A5A2B;
+  --berry: #D6455A;
+}
+[data-theme="christmas-night"] {
+  --page: #1C4F31;
+  --page-dots: var(--page);
+  --panel: rgba(255,255,255,0.12);
+  --panel-inner: rgba(8,36,22,0.28);
+  --white: rgba(8,36,22,0.40);
+  --border: rgba(255,255,255,0.55);
+  --border-soft: rgba(255,255,255,0.24);
+  --border-neutral: rgba(255,255,255,0.50);
+  --border-neutral-hover: rgba(255,255,255,0.70);
+  --ink: #FFF6DF;
+  --ink-2: #E9DFC6;
+  --ink-muted: #DCE6D8;
+  --ink-faint: #D6E3DA;
+  --ink-disabled: #B9D0C1;
+  --action: #F5CF6E;
+  --action-dark: #C8912A;
+  --action-ink: #FFF6DF;
+  --action-tint: #2E5A3F;
+  --action-tint-hover: var(--action-tint);
+  --action-border: rgba(255,255,255,0.55);
+  --on-action: #3A2C1C;
+  --highlight: #F5CF6E;
+  --accent: #D6455A;
+  --warm13-bg: #4A3A2A;
+  --warm13-border: #E3A08C;
+  --warm13-ink: #FFDDD6;
+  --danger-border: rgba(255,190,178,0.65);
+  --danger-ink: #FFDDD6;
+  --danger-tint: #2E5A3F;
+  --flat-shadow: rgba(8,36,22,0.35);
+  --scrim: rgba(8,24,14,0.62);
+  --sheet: #2E5A41;
+  --shadow-panel: 0 4px 0 rgba(8,36,22,0.35);
+  --shadow-step: 0 5px 0 rgba(8,36,22,0.35);
+  --shadow-cta: 0 5px 0 #C8912A;
+  --shadow-cta-pressed: 0 2px 0 #C8912A;
+  --shadow-cta-waiting: 0 5px 0 rgba(8,36,22,0.35);
+  --shadow-mark: 0 2px 0 #C8912A;
+  --shadow-field-invalid: 0 0 0 4px rgba(227,160,140,0.25);
+  --shadow-overlay: 0 18px 40px rgba(0,0,0,0.45);
+}
+

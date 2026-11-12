@@ -1,0 +1,34 @@
+{
+  "v": 3,
+  "assetGroups": {},
+  "blobs": {},
+  "createdOnFiles": {
+    "at": "2026-10-31T15:56:41Z",
+    "v": 1
+  },
+  "docs": {
+    "readme": "project/README.md",
+    "sections": []
+  },
+  "groups": [],
+  "lastChange": {
+    "at": "2026-11-12T06:30:00Z",
+    "by": "Thao Mai",
+    "note": "Renamed the design system from pawker to boo. The pawker theme, the pawker app and its wordmark keep their name; code names (window.Pawker, CSS classes) unchanged.",
+    "via": "Claude chat"
+  },
+  "layout": "files",
+  "libraries": [
+    {
+      "name": "react",
+      "version": "18"
+    },
+    {
+      "name": "react-dom",
+      "version": "18"
+    }
+  ],
+  "namespace": "Pawker",
+  "sections": {},
+  "title": "boo"
+}

@@ -1,0 +1,18 @@
+<!-- @dsCard group="Surfaces" height=200 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"></head>
+<body>
+<div id="root" class="pk-row pk-page" style="gap:22px;align-items:stretch;padding:22px"></div>
+<script>
+  var P = window.Pawker, h = React.createElement;
+
+  function Body(t, n) { return h('div', { style: { padding: '22px', display: 'flex', flexDirection: 'column', gap: '6px', width: '150px' } }, h('span', { className: 'title' }, t), h('span', { className: 'note', style: { color: 'var(--ink-faint)' } }, n)); }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h(P.Panel, { size: 'room' }, Body('manage burrow', 'room 16 · 2px · flat')),
+    h(P.Panel, { size: 'step', inner: true }, Body('the burrow is dug', 'step 20 · inner')),
+    h(P.Panel, { size: 'door' }, Body('create a new burrow', 'door 24 · 3px')),
+    h(P.Panel, { size: 'overlay' }, Body("the table's set", 'overlay 26 · blur'))));
+</script>
+</body>
+</html>

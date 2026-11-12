@@ -1,0 +1,44 @@
+// Port of Pawker.Wordmark. Spec: design-system/components/Wordmark/README.md
+// Ported but not used yet: see docs/decisions.md ("Wordmark") for the open question.
+import { Paw } from "./Paw";
+
+export interface WordmarkProps {
+  /** The product name, lowercase. Default "pawker". Secret Santa passes "secret santa". */
+  word?: string;
+  /** Links home. Every screen carries the wordmark top-left. */
+  href?: string;
+  onClick?: () => void;
+  /** Adds the header block: burrow name under the lockup, flush with the word. */
+  burrow?: string;
+  members?: number;
+}
+
+export function Wordmark({ word = "pawker", href, onClick, burrow, members }: WordmarkProps) {
+  const inner = (
+    <>
+      <span className="pk-wordmark-mark">
+        <Paw size={14} fill="var(--action)" />
+      </span>
+      <span className="pk-wordmark-word">{word}</span>
+    </>
+  );
+  const lockup = href ? (
+    <a className="pk-wordmark" href={href} onClick={onClick}>
+      {inner}
+    </a>
+  ) : (
+    <div className="pk-wordmark" onClick={onClick}>
+      {inner}
+    </div>
+  );
+  if (!burrow) return lockup;
+  return (
+    <div className="pk-header">
+      {lockup}
+      <div className="pk-header-sub">
+        <span className="pk-header-burrow">{burrow}</span>
+        {members != null ? <span className="pk-header-members">{members} members</span> : null}
+      </div>
+    </div>
+  );
+}

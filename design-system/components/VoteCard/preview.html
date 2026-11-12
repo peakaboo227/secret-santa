@@ -1,0 +1,19 @@
+<!-- @dsCard group="Table" height=130 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"></head>
+<body>
+<div id="root" class="pk-row" style="gap:22px"></div>
+<script>
+  var P = window.Pawker, h = React.createElement;
+
+  var cases = [
+    ['face down', { voted: true }], ['yours, face down', { voted: true, mine: true }],
+    ['revealed', { revealed: true, card: '5' }], ['yours, revealed', { revealed: true, mine: true, card: '8' }],
+    ['not voted', { voted: false }], ['small', { size: 'sm', revealed: true, card: '3' }]];
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, cases.map(function (c) {
+    return h('div', { key: c[0], className: 'pk-col', style: { alignItems: 'center', padding: 0 } }, h(P.VoteCard, c[1]), h('span', { className: 'pk-cap' }, c[0]));
+  })));
+</script>
+</body>
+</html>

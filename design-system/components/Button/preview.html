@@ -1,0 +1,20 @@
+<!-- @dsCard group="Actions" height=150 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"></head>
+<body>
+<div id="cta" class="pk-row"></div><div id="row" class="pk-row" style="gap:8px"></div>
+<script>
+  var P = window.Pawker, h = React.createElement;
+
+  ReactDOM.createRoot(document.getElementById('cta')).render(h(React.Fragment, null,
+    h(P.Button, {}, 'go to the burrow'), h(P.Button, { disabled: true }, 'next')));
+  ReactDOM.createRoot(document.getElementById('row')).render(h(React.Fragment, null,
+    h(P.Button, { variant: 'utility' }, 'burrow ', h('span', { className: 'code', style: { fontSize: '13px' } }, '482 913')),
+    h(P.Button, { variant: 'utility', tone: 'share' }, 'copy the burrow link'),
+    h(P.Button, { variant: 'utility', tone: 'share' }, 'curl up & watch'),
+    h(P.Button, { variant: 'utility' }, 'new round'),
+    h(P.Button, { variant: 'utility', tone: 'leave' }, 'hop out')));
+</script>
+</body>
+</html>

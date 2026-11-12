@@ -1,0 +1,50 @@
+<!-- @dsCard height=288 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8">
+<style>
+  html, body { margin: 0; height: 100%; }
+  .cover { position: relative; width: 960px; height: 288px; overflow: hidden; background: var(--page); }
+  .cover svg { position: absolute; left: 0; top: 0; }
+  .b-highlight { fill: var(--highlight); }
+  .b-action { fill: var(--action); }
+  .b-rim { fill: var(--bed-rim); }
+  .b-cushion { fill: var(--bed-cushion); }
+  .b-accent { fill: var(--accent); }
+  .p-cut { fill: var(--page); }
+  .p-ring { fill: none; stroke: var(--border-ring); stroke-width: 2; stroke-dasharray: 6 6; }
+  .name { position: absolute; left: 40px; bottom: 64px; max-width: 440px; margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 110px; line-height: .92; letter-spacing: -0.01em; color: var(--ink); }
+  .tag { position: absolute; left: 44px; bottom: 34px; max-width: 440px; margin: 0; font-family: var(--font-sans); font-size: 14px; color: var(--ink-muted); }
+</style>
+</head>
+<body>
+<div class="cover">
+  <svg width="960" height="288" viewBox="0 0 960 288" aria-hidden="true">
+    <!--
+      blocks: highlight slab 420x150 (radius-overlay 26), action pill 260x88 (radius-pill, rx 44), bed-rim disc 196 with bed-cushion stadium inside, accent pill 120x44 (rx 22)
+      arrangement: a butter slab bleeding off the top right, the bed bleeding off the bottom right, the action pill and accent pill stacked left of it like a row of room pills
+      pattern: pills from radius-pill, cut out of the slab as a staggered utility row; chosen because boo has one shape, the pill, and every action is one
+      scales: pill pitch space-8 gaps, pill height 14 (rx 7), bed ring dashed like border-ring, radius-overlay 26 on the slab
+    -->
+    <rect class="b-highlight" x="540" y="-26" width="446" height="156" rx="26"/>
+    <rect class="p-cut" x="580" y="30" width="56" height="14" rx="7"/>
+    <rect class="p-cut" x="644" y="30" width="40" height="14" rx="7"/>
+    <rect class="p-cut" x="692" y="30" width="72" height="14" rx="7"/>
+    <rect class="p-cut" x="772" y="30" width="48" height="14" rx="7"/>
+    <rect class="p-cut" x="604" y="52" width="40" height="14" rx="7"/>
+    <rect class="p-cut" x="652" y="52" width="64" height="14" rx="7"/>
+    <rect class="p-cut" x="724" y="52" width="40" height="14" rx="7"/>
+    <rect class="p-cut" x="580" y="74" width="72" height="14" rx="7"/>
+    <rect class="p-cut" x="660" y="74" width="48" height="14" rx="7"/>
+    <rect class="p-cut" x="716" y="74" width="56" height="14" rx="7"/>
+    <rect class="b-rim" x="760" y="150" width="240" height="196" rx="98"/>
+    <rect class="b-cushion" x="782" y="172" width="196" height="152" rx="76"/>
+    <rect class="p-ring" x="800" y="190" width="160" height="116" rx="58"/>
+    <rect class="b-action" x="520" y="150" width="220" height="88" rx="44"/>
+    <rect class="b-accent" x="560" y="250" width="120" height="44" rx="22"/>
+  </svg>
+  <h1 class="name">boo</h1>
+  <p class="tag">warm, cute pixel apps. one theme per product. never corporate.</p>
+</div>
+</body>
+</html>
