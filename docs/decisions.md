@@ -2,6 +2,10 @@
 
 Newest first. Each entry: what was decided, and why.
 
+## 2026-11-12: wordmark
+
+- Every screen carries the `Wordmark` top-left with the word "secret santa" (from `copy.wordmark`), linking home, as the design system says. The setup brief's "skip Wordmark" is superseded.
+
 ## 2026-11-12: project setup
 
 - **Stack:** Next.js 16.4 (App Router) + React 19.3 + TypeScript on Vercel Hobby; Neon Postgres (free) with
@@ -36,8 +40,5 @@ Newest first. Each entry: what was decided, and why.
 
 ## open questions
 
-- **Wordmark:** the setup brief said to skip `Wordmark` as the pawker logo. The design system (updated
-  the same day) says Secret Santa uses it with `word="secret santa"`, top-left on every screen. It is ported
-  but not used yet. Decide before building the first real screen.
 - **Landing copy:** the design system says "no pitch copy on the landing". The placeholder home has one
   functional line ("open the game link your host sent you"). Revisit when the real home is designed.

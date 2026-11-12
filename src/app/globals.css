@@ -23,18 +23,24 @@ body {
   z-index: -1;
 }
 
+/* Every screen carries the wordmark top-left, inside the page padding. */
+.screen-header,
 .screen-main {
   box-sizing: border-box;
   width: 100%;
   max-width: 1140px;
   margin-inline: auto;
   padding: var(--space-22) var(--space-22) 0;
+}
+
+.screen-main {
   display: flex;
   flex-direction: column;
   gap: var(--space-14);
 }
 
 @media (min-width: 768px) {
+  .screen-header,
   .screen-main {
     padding-inline: var(--space-64);
   }

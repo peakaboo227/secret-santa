@@ -1,5 +1,5 @@
 // Port of Pawker.Wordmark. Spec: design-system/components/Wordmark/README.md
-// Ported but not used yet: see docs/decisions.md ("Wordmark") for the open question.
+// Secret Santa passes word={copy.wordmark} ("secret santa"), top-left on every screen.
 import { Paw } from "./Paw";
 
 export interface WordmarkProps {
