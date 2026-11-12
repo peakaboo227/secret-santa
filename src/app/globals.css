@@ -82,6 +82,9 @@ body {
   --checkbox-size: 22px;
   --pin-size: 36px;
   --icon-lg: 24px;
+  --how-art-height: 140px;
+  --how-number-size: 36px;
+  --how-number-text: 18px;
   --dead-end-text: 300px;
 }
 
@@ -275,4 +278,51 @@ body {
 .pet-tile-on:hover {
   border: var(--stroke-heavy) solid var(--action);
   box-shadow: var(--shadow-mark);
+}
+
+/* instructions: an illustration slot, then four numbered steps. */
+.how-art {
+  height: var(--how-art-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--stroke-ui) solid var(--border-soft);
+  border-radius: var(--radius-step);
+  color: var(--ink-2);
+}
+
+.how-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-18);
+}
+
+.how-steps li {
+  display: flex;
+  gap: var(--space-12);
+  align-items: flex-start;
+}
+
+.how-number {
+  flex: none;
+  box-sizing: border-box;
+  width: var(--how-number-size);
+  height: var(--how-number-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--how-number-text);
+  background: var(--panel-inner);
+  border: var(--stroke-ui) solid var(--border-soft);
+  border-radius: var(--radius-pill);
+}
+
+.how-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-top: var(--space-6);
 }

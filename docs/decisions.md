@@ -25,6 +25,9 @@ Newest first. Each entry: what was decided, and why.
 - **Wording changed by the product owner on the preview** (differs from the prototype on purpose): choose your
   pet's heading is "choose your character" and its button is "yup, that’s me". Meet your pet has no small
   "meet your pet" line above "you’re …".
+- **Instructions live at `/g/<game code>/instructions`**, with the prototype's text for now (P2 rewrites it) and
+  the prototype's "[illustration]" placeholder box until the picture is designed. Only the "first time" mode is
+  built; "reopened from the menu" comes with P8. The host's button goes to the manage page.
 - **Gift day "not in the past"**: the browser checks the device's own today; the server only refuses a day that
   is over everywhere on earth, since it doesn't know the host's time zone.
 - **Prototype sizes without a boo token** (6, 12, 16, 18 px spacing, the 440px column, the 36px PIN) are named once

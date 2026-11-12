@@ -211,3 +211,32 @@ export async function getMeetPet(gameCode: string): Promise<MeetPet | null> {
   if (!row || !row.pet || !row.petName) return null;
   return { groupName: row.groupName, budget: row.budget ?? "", giftDay: row.giftDay ?? "", pet: row.pet, petName: row.petName };
 }
+
+export type InstructionsPage = {
+  groupName: string;
+  budget: string;
+  giftDay: string;
+  /** Where "continue" goes: the manage page for the host, the member's own space for everyone else. */
+  next: { kind: "manage"; href: string } | { kind: "wishlist"; href: string };
+};
+
+/** Instructions, first time: the group header and where this device goes next. Members of the group only. */
+export async function getInstructionsPage(gameCode: string): Promise<InstructionsPage | null> {
+  const device = await getDevice();
+  if (!device) return null;
+  const rows = await db()
+    .select({ id: schema.groups.id, name: schema.groups.name, budget: schema.groups.budget, giftDay: schema.groups.giftDay })
+    .from(schema.groups)
+    .where(and(eq(schema.groups.id, device.groupId), eq(schema.groups.gameCode, gameCode)))
+    .limit(1);
+  const group = rows[0];
+  if (!group) return null;
+  return {
+    groupName: group.name,
+    budget: group.budget ?? "",
+    giftDay: group.giftDay ?? "",
+    next: device.isHost
+      ? { kind: "manage", href: `/manage/${group.id}` }
+      : { kind: "wishlist", href: `/g/${gameCode}` },
+  };
+}
