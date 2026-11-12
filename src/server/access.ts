@@ -1,7 +1,7 @@
 import "server-only";
 import { and, eq, isNull } from "drizzle-orm";
 import { cookies } from "next/headers";
-import { hashToken, ownerCookieValue, safeEqual } from "./crypto";
+import { hashToken, ownerCookieValue, randomToken, safeEqual } from "./crypto";
 import { db, schema } from "./db";
 
 /**
@@ -35,6 +35,19 @@ export async function getDevice(): Promise<Device | null> {
     .where(and(eq(schema.deviceSessions.tokenHash, hashToken(token)), isNull(schema.deviceSessions.revokedAt)))
     .limit(1);
   return rows[0] ?? null;
+}
+
+/** Remember this device as a member for the whole game: a random token in a cookie, only its hash stored. */
+export async function rememberDevice(member: { memberId: string; groupId: string }): Promise<void> {
+  const token = randomToken();
+  await db().insert(schema.deviceSessions).values({ ...member, tokenHash: hashToken(token) });
+  (await cookies()).set(DEVICE_COOKIE, token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+    maxAge: 60 * 60 * 24 * 180,
+  });
 }
 
 /**

@@ -14,6 +14,17 @@ Newest first. Each entry: what was decided, and why.
   owner will grow the list to 30+ later.
 - **The group is saved when step 2 of create group continues**, so step 3 shows a real PIN. Going back and
   continuing again updates the same group and keeps the PIN.
+- **The host's phone is remembered when they choose their pet**: that is the moment the host "joins". The pet
+  name is picked at random from the names not yet used in the group.
+- **Meet your pet lives at `/g/<game code>/meet`** and shows the device's own pet, so the joining story (P1) can
+  reuse it for participants. The host's choose your pet is at `/new/<group id>/pet`; its "back" reopens create
+  group at "your pin" (`/new?group=<id>`), so going back never makes a second group.
+- **"pet" is "character" in everything people read** (product owner, 12 Nov): every text in `src/copy.ts` says
+  "character" and "character name" where the prototype says "pet" and "pet name". This applies to every later
+  screen too. Code, file and database names keep "pet".
+- **Wording changed by the product owner on the preview** (differs from the prototype on purpose): choose your
+  pet's heading is "choose your character" and its button is "yup, that’s me". Meet your pet has no small
+  "meet your pet" line above "you’re …".
 - **Gift day "not in the past"**: the browser checks the device's own today; the server only refuses a day that
   is over everywhere on earth, since it doesn't know the host's time zone.
 - **Prototype sizes without a boo token** (6, 12, 16, 18 px spacing, the 440px column, the 36px PIN) are named once

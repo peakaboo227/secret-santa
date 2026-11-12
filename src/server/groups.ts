@@ -1,5 +1,5 @@
 import "server-only";
-import { and, eq } from "drizzle-orm";
+import { and, eq, isNull } from "drizzle-orm";
 import {
   checkDetails,
   checkHost,
@@ -10,7 +10,9 @@ import {
   type DetailsErrors,
   type HostErrors,
 } from "@/lib/create-group";
-import { isOwner } from "./access";
+import { isPetSlug } from "@/components/boo/Pet";
+import { pickPetName } from "@/lib/pet-names";
+import { getDevice, isOwner, rememberDevice } from "./access";
 import { makeGameCode, makePin } from "./crypto";
 import { db, schema } from "./db";
 
@@ -54,13 +56,13 @@ export async function saveGroup(input: SaveGroupInput): Promise<SaveGroupResult 
 
   if (input.groupId && UUID.test(input.groupId)) {
     const existing = await db()
-      .select({ pin: schema.members.pin, stage: schema.groups.stage })
+      .select({ pin: schema.members.pin, stage: schema.groups.stage, joinedAt: schema.members.joinedAt })
       .from(schema.groups)
       .innerJoin(schema.members, and(eq(schema.members.groupId, schema.groups.id), eq(schema.members.isHost, true)))
       .where(eq(schema.groups.id, input.groupId))
       .limit(1);
     const row = existing[0];
-    if (row && row.stage === "setup") {
+    if (row && row.stage === "setup" && !row.joinedAt) {
       await db().batch([
         db().update(schema.groups).set(group).where(eq(schema.groups.id, input.groupId)),
         db()
@@ -79,4 +81,133 @@ export async function saveGroup(input: SaveGroupInput): Promise<SaveGroupResult 
     db().insert(schema.members).values({ groupId, isHost: true, pin, ...host }),
   ]);
   return { ok: true, groupId, pin };
+}
+
+/** A group the creator is still setting up: saved, but the host hasn't chosen a pet yet. */
+export type GroupDraft = {
+  groupId: string;
+  groupName: string;
+  budget: string;
+  giftDay: string;
+  hostName: string;
+  playing: boolean;
+  pin: string;
+};
+
+async function hostRow(groupId: string) {
+  if (!UUID.test(groupId)) return null;
+  const rows = await db()
+    .select({
+      memberId: schema.members.id,
+      groupName: schema.groups.name,
+      budget: schema.groups.budget,
+      giftDay: schema.groups.giftDay,
+      gameCode: schema.groups.gameCode,
+      stage: schema.groups.stage,
+      hostName: schema.members.realName,
+      playing: schema.members.playing,
+      pin: schema.members.pin,
+      joinedAt: schema.members.joinedAt,
+    })
+    .from(schema.groups)
+    .innerJoin(schema.members, and(eq(schema.members.groupId, schema.groups.id), eq(schema.members.isHost, true)))
+    .where(eq(schema.groups.id, groupId))
+    .limit(1);
+  return rows[0] ?? null;
+}
+
+/** Where a host goes once their pet is chosen: meet your pet if playing, otherwise the manage page. */
+function afterPet(row: { playing: boolean; gameCode: string }, groupId: string): string {
+  return row.playing ? `/g/${row.gameCode}/meet` : `/manage/${groupId}`;
+}
+
+/**
+ * The creator's own unfinished group, to reopen create group at "your pin" (back from choose your pet).
+ * Only for the device that may create groups, and only until the host has chosen a pet.
+ */
+export async function getGroupDraft(groupId: string): Promise<GroupDraft | null> {
+  if (!(await canCreateGroup())) return null;
+  const row = await hostRow(groupId);
+  if (!row || row.stage !== "setup" || row.joinedAt) return null;
+  return {
+    groupId,
+    groupName: row.groupName,
+    budget: row.budget ?? "",
+    giftDay: row.giftDay ?? "",
+    hostName: row.hostName,
+    playing: row.playing,
+    pin: row.pin,
+  };
+}
+
+export type HostPetStep =
+  | { state: "choose"; groupName: string; budget: string; giftDay: string }
+  /** The host already has a pet: send them on. */
+  | { state: "done"; next: string };
+
+/** What the host's choose your pet screen needs: the group header, or where to go if a pet is already chosen. */
+export async function getHostPetStep(groupId: string): Promise<HostPetStep | null> {
+  if (!(await canCreateGroup())) return null;
+  const row = await hostRow(groupId);
+  if (!row) return null;
+  if (row.joinedAt) return { state: "done", next: afterPet(row, groupId) };
+  return { state: "choose", groupName: row.groupName, budget: row.budget ?? "", giftDay: row.giftDay ?? "" };
+}
+
+/**
+ * The host chooses their pet right after creating the group: saves the pet, gives them a pet name,
+ * and remembers this device as the host. Returns where to go next, or null if not allowed.
+ */
+export async function chooseHostPet(groupId: string, pet: string): Promise<string | null> {
+  if (!(await canCreateGroup()) || !isPetSlug(pet)) return null;
+  const row = await hostRow(groupId);
+  if (!row) return null;
+  if (row.joinedAt) return afterPet(row, groupId);
+
+  const taken = await db()
+    .select({ petName: schema.members.petName })
+    .from(schema.members)
+    .where(eq(schema.members.groupId, groupId));
+  const petName = pickPetName(taken.flatMap((m) => (m.petName ? [m.petName] : [])));
+  if (!petName) return null;
+
+  const updated = await db()
+    .update(schema.members)
+    .set({ pet, petName, joinedAt: new Date() })
+    .where(and(eq(schema.members.id, row.memberId), isNull(schema.members.joinedAt)))
+    .returning({ id: schema.members.id });
+  if (updated.length === 0) return afterPet(row, groupId);
+
+  await rememberDevice({ memberId: row.memberId, groupId });
+  return afterPet(row, groupId);
+}
+
+export type MeetPet = {
+  groupName: string;
+  budget: string;
+  giftDay: string;
+  /** The member's own pet and pet name. Never anyone else's. */
+  pet: string;
+  petName: string;
+};
+
+/** Meet your pet: this device's own pet in the group behind this game code, or null. */
+export async function getMeetPet(gameCode: string): Promise<MeetPet | null> {
+  const device = await getDevice();
+  if (!device) return null;
+  const rows = await db()
+    .select({
+      groupName: schema.groups.name,
+      budget: schema.groups.budget,
+      giftDay: schema.groups.giftDay,
+      pet: schema.members.pet,
+      petName: schema.members.petName,
+    })
+    .from(schema.members)
+    .innerJoin(schema.groups, eq(schema.groups.id, schema.members.groupId))
+    .where(and(eq(schema.members.id, device.memberId), eq(schema.groups.gameCode, gameCode)))
+    .limit(1);
+  const row = rows[0];
+  if (!row || !row.pet || !row.petName) return null;
+  return { groupName: row.groupName, budget: row.budget ?? "", giftDay: row.giftDay ?? "", pet: row.pet, petName: row.petName };
 }

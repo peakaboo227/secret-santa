@@ -14,6 +14,7 @@ import {
   type DetailsErrors,
   type HostErrors,
 } from "@/lib/create-group";
+import type { GroupDraft } from "@/server/groups";
 import { saveGroupAction } from "./actions";
 
 const t = copy.createGroup;
@@ -22,17 +23,20 @@ const t = copy.createGroup;
  * The three steps of create group, as in prototype/CreateGroup.dc.html:
  * 1. group name, budget, gift day  2. your name and "i'm playing too"  3. your pin.
  * The group is saved when step 2 continues; going back and continuing again updates it.
+ * `initial` reopens a saved group at "your pin" (back from choose your pet).
  */
-export function CreateGroupForm() {
-  const [step, setStep] = useState<1 | 2 | 3>(1);
-  const [groupName, setGroupName] = useState("");
-  const [budget, setBudget] = useState("");
-  const [giftDay, setGiftDay] = useState("");
-  const [hostName, setHostName] = useState("");
-  const [playing, setPlaying] = useState(true);
+export function CreateGroupForm({ initial }: { initial?: GroupDraft }) {
+  const [step, setStep] = useState<1 | 2 | 3>(initial ? 3 : 1);
+  const [groupName, setGroupName] = useState(initial?.groupName ?? "");
+  const [budget, setBudget] = useState(initial?.budget ?? "");
+  const [giftDay, setGiftDay] = useState(initial?.giftDay ?? "");
+  const [hostName, setHostName] = useState(initial?.hostName ?? "");
+  const [playing, setPlaying] = useState(initial?.playing ?? true);
   const [errors, setErrors] = useState<DetailsErrors & HostErrors>({});
   const [saveFailed, setSaveFailed] = useState(false);
-  const [saved, setSaved] = useState<{ groupId: string; pin: string } | null>(null);
+  const [saved, setSaved] = useState<{ groupId: string; pin: string } | null>(
+    initial ? { groupId: initial.groupId, pin: initial.pin } : null,
+  );
   const [pending, startTransition] = useTransition();
   const today = localToday();
 
