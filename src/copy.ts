@@ -60,13 +60,13 @@ export const copy = {
   /** choose your pet (prototype/ChoosePet.dc.html). {n} is the pet's number in the grid. */
   choosePet: {
     back: "back",
-    heading: "choose your pet",
+    heading: "choose your character",
     intro:
       "your santa only ever sees your pet and pet name, never your real name. remember which one you pick: it’s how you get back in on a new phone.",
     pets: "pets",
     pet: "pet {n}",
     shared: "others can pick the same pet. your pet name tells you apart.",
-    confirm: "this is my pet",
+    confirm: "yup, that’s me",
     pickFirst: "pick a pet first",
     saveFailed: "couldn’t save your pet. try again in a moment.",
   },
