@@ -10,7 +10,13 @@ explain what you did in plain words, and stop to ask when a product decision is 
 - **Never push to main.** Always work on a branch and open a pull request. The product owner reviews
   each one on the Vercel preview link and merges it. (GitHub's free plan can't enforce this on a private
   repo, so this rule is what keeps the review step in place.)
-- **One user story per pull request.** Small, focused PRs are quicker to review on a phone and easier to undo.
+- **Split each user story into a few small pull requests** (trial for the first few stories; the product
+  owner may change it). Before coding a story, post a short numbered plan of its PRs and wait for an OK.
+  Each PR is one meaningful step a person can see or check on the Vercel preview (for example: the
+  database table, then the page, then the link to it). Not too small: never a PR for a single tweak that
+  can't be checked on its own. Each PR must leave the app working, and a half-built feature stays out of
+  reach on the live site (not linked from any screen) until its last PR. Name PRs "story: step n of m".
+  Small, focused PRs are quicker to review on a phone and easier to undo.
 - **The browser never talks to the database.** All data access goes through server-only code
   (`import "server-only"`) that first checks who the device is (`src/server/access.ts`) and what that role
   may see, and returns only those fields. Never send a whole row to the browser.

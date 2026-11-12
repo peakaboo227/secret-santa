@@ -8,9 +8,19 @@ Newest first. Each entry: what was decided, and why.
   for byte into `prototype/`, so cloud sessions can read it. It's the spec: screens match it exactly. The older
   "explorations" page is left out on purpose, so no one builds an outdated option.
 
+## 2026-11-12: notion permissions
+
+- `.claude/settings.json` lets Claude search, read, edit and create Notion pages without an "allow" prompt, so the product owner's project docs can be updated on request. Deleting, moving and sharing pages still ask. The rule only applies in sessions that have just this repo.
+
+## 2026-11-12: pull request size
+
+- Trial: each user story is split into a few small pull requests, planned up front, instead of one PR per story. The product owner wanted to follow progress step by step. Half-built features stay unlinked on the live site until the story's last PR. To revisit after the first few stories.
+
 ## 2026-11-12: wordmark
 
 - Every screen carries the `Wordmark` top-left with the word "secret santa" (from `copy.wordmark`), linking home, as the design system says. The setup brief's "skip Wordmark" is superseded.
+- The card's pip is a pixel gift (gold box, berry ribbon), not the design system's paw, as in the prototype
+  (`Wordmark mark="gift"`).
 
 ## 2026-11-12: project setup
 
