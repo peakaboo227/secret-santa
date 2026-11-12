@@ -1,4 +1,5 @@
 import { SceneGround, SceneSky, Wordmark } from "@/components/boo";
+import { ScreenFooter } from "@/components/ScreenFooter";
 import { copy } from "@/copy";
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
         <h1 className="headline">{copy.home.appName}</h1>
         <p className="body home-line">{copy.home.line}</p>
       </main>
+      <ScreenFooter />
       <SceneGround />
     </div>
   );

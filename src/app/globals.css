@@ -46,8 +46,16 @@ body {
   }
 }
 
-.screen > .pk-ground {
+/* The footer sits at the bottom of the content, just above the ground. */
+.screen-footer {
   margin-top: auto;
+  padding: var(--space-22) var(--space-22) 0;
+  text-align: center;
+  color: var(--ink-muted);
+}
+
+.screen-footer p {
+  margin: 0;
 }
 
 .home {

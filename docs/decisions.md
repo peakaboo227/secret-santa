@@ -2,6 +2,10 @@
 
 Newest first. Each entry: what was decided, and why.
 
+## 2026-11-12: footer
+
+- Every screen ends with a quiet footer line, "made for friends" (`copy.footer`), centred just above the snowbank (`ScreenFooter`). Asked for by the product owner, so it stands despite the design system's "no pitch copy on the landing".
+
 ## 2026-11-12: wordmark
 
 - Every screen carries the `Wordmark` top-left with the word "secret santa" (from `copy.wordmark`), linking home, as the design system says. The setup brief's "skip Wordmark" is superseded.

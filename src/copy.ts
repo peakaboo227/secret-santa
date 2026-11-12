@@ -8,6 +8,8 @@ export const copy = {
   },
   /** The product name in the wordmark, top-left on every screen. */
   wordmark: "secret santa",
+  /** The line at the end of every screen. */
+  footer: "made for friends",
   home: {
     appName: "secret santa",
     line: "open the game link your host sent you",
