@@ -6,6 +6,8 @@ export const copy = {
     title: "secret santa",
     description: "a secret santa for friends",
   },
+  /** The product name in the wordmark, top-left on every screen. */
+  wordmark: "secret santa",
   home: {
     appName: "secret santa",
     line: "open the game link your host sent you",
