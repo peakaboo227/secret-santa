@@ -19,6 +19,9 @@ Newest first. Each entry: what was decided, and why.
 - **Meet your pet lives at `/g/<game code>/meet`** and shows the device's own pet, so the joining story (P1) can
   reuse it for participants. The host's choose your pet is at `/new/<group id>/pet`; its "back" reopens create
   group at "your pin" (`/new?group=<id>`), so going back never makes a second group.
+- **"pet" is "character" in everything people read** (product owner, 12 Nov): every text in `src/copy.ts` says
+  "character" and "character name" where the prototype says "pet" and "pet name". This applies to every later
+  screen too. Code, file and database names keep "pet".
 - **Wording changed by the product owner on the preview** (differs from the prototype on purpose): choose your
   pet's heading is "choose your character" and its button is "yup, that’s me". Meet your pet has no small
   "meet your pet" line above "you’re …".

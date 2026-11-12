@@ -40,16 +40,16 @@ export const copy = {
       yourNameError: "add your name",
       playing: "i’m playing too",
       playingNote:
-        "you’ll get a pet, a wishlist and a giftee like everyone. you still can’t see who has who until the gift exchange.",
+        "you’ll get a character, a wishlist and a giftee like everyone. you still can’t see who has who until the gift exchange.",
       saveFailed: "couldn’t save the group. try again in a moment.",
       notPlayingNote: "your name stays on the list so you can sign in, but it’s left out of the draw: no wishlist, no giftee.",
     },
     pin: {
       eyebrow: "step 3 of 3",
       heading: "your pin",
-      intro: "the app made this pin for {name}. save it now: you need it, with your pet, to manage this group on another phone.",
+      intro: "the app made this pin for {name}. save it now: you need it, with your character, to manage this group on another phone.",
       lostIt: "lost it later? the owner link still opens the manage page, and the pin list is there.",
-      next: "saved it, choose my pet",
+      next: "saved it, choose my character",
     },
   },
   /** The group block under the wordmark. {budget} and {day} are filled in from the group. */
@@ -62,19 +62,19 @@ export const copy = {
     back: "back",
     heading: "choose your character",
     intro:
-      "your santa only ever sees your pet and pet name, never your real name. remember which one you pick: it’s how you get back in on a new phone.",
-    pets: "pets",
-    pet: "pet {n}",
-    shared: "others can pick the same pet. your pet name tells you apart.",
+      "your santa only ever sees your character and character name, never your real name. remember which one you pick: it’s how you get back in on a new phone.",
+    pets: "characters",
+    pet: "character {n}",
+    shared: "others can pick the same character. your character name tells you apart.",
     confirm: "yup, that’s me",
-    pickFirst: "pick a pet first",
-    saveFailed: "couldn’t save your pet. try again in a moment.",
+    pickFirst: "pick a character first",
+    saveFailed: "couldn’t save your character. try again in a moment.",
   },
   /** meet your pet (prototype/MeetPet.dc.html). {pet} is the member's own pet name. */
   meetPet: {
-    petLabel: "your pet",
-    heading: "you’re {pet}",
-    body: "your santa will see {pet} and your wishlist, never your name.",
+    petLabel: "your character",
+    heading: "you’re {character}",
+    body: "your santa will see {character} and your wishlist, never your name.",
     continue: "continue",
   },
   /** link not found (prototype/NotFound.dc.html) */

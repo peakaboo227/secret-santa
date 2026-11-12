@@ -22,7 +22,7 @@ async function Meet({ params }: Pick<PageProps<"/g/[code]/meet">, "params">) {
   const { code } = await params;
   const me = await getMeetPet(code);
   if (!me || !isPetSlug(me.pet)) notFound();
-  const names = { pet: me.petName };
+  const names = { character: me.petName };
   return (
     <Screen group={{ name: me.groupName, info: groupInfoLine(me.budget, me.giftDay) }}>
       <main className="dead-end">

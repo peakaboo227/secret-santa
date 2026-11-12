@@ -29,6 +29,8 @@ explain what you did in plain words, and stop to ask when a product decision is 
   layout, spacing, colours, icons and states. Don't redesign, reword or "improve" it. If something can't be
   built as designed, or a screen isn't in the prototype, stop and ask. Never edit `prototype/` except to
   re-copy it from the design canvas.
+  One agreed difference: where the prototype's text says "pet" or "pet name", the app says "character" or
+  "character name" (see `docs/decisions.md`). Code and database names keep "pet".
 - **Design system first.** It lives in `design-system/` (the boo design system, `christmas-night` theme,
   dark only). Read `design-system/README.md` first, and each component's README before using it.
   Use the typed components in `src/components/boo`. Colours, spacing, radius and type only through
