@@ -25,6 +25,18 @@ Newest first. Each entry: what was decided, and why.
 - **Wording changed by the product owner on the preview** (differs from the prototype on purpose): choose your
   pet's heading is "choose your character" and its button is "yup, that’s me". Meet your pet has no small
   "meet your pet" line above "you’re …".
+- **Instructions live at `/g/<game code>/instructions`**, with the prototype's text for now (P2 rewrites it) and
+  the prototype's "[illustration]" placeholder box until the picture is designed. Only the "first time" mode is
+  built; "reopened from the menu" comes with P8. The host's button goes to the manage page.
+- **Manage page, first version (H1):** built to the prototype's "just created" state, minus the controls that
+  belong to later stories, so nothing on it is a dead button (product owner's call). Left for later: adding
+  names and the pin list (H2), rule pickers (H3), the draw (H5), the gift exchange (H6), "my space" (P4), and
+  the per-name options sheet. The disabled "draw names" pill and the text-only parts stay. The page's server
+  code returns per name only: real name, joined, has a wishlist.
+- **App home:** "create a group" shows only for the owner link; "groups i manage" lists every group for the
+  owner and the host's own group for a host device. The row says "1 name" for one name. The "not drawn yet"
+  part shows until the draw; wording for later stages comes with H5.
+- **Game link address** comes from `APP_URL`; if that isn't set, from the address the page was opened on.
 - **Gift day "not in the past"**: the browser checks the device's own today; the server only refuses a day that
   is over everywhere on earth, since it doesn't know the host's time zone.
 - **Prototype sizes without a boo token** (6, 12, 16, 18 px spacing, the 440px column, the 36px PIN) are named once
@@ -84,5 +96,7 @@ Newest first. Each entry: what was decided, and why.
 
 ## open questions
 
-- **Landing copy:** the design system says "no pitch copy on the landing". The placeholder home has one
-  functional line ("open the game link your host sent you"). Revisit when the real home is designed.
+- **Instructions picture:** the prototype has an "[illustration]" placeholder; the app shows the same box until
+  a picture is designed (P2).
+- **More than 10 players:** there are 10 character names and each is used once per group. The product owner
+  will grow the list to 30+ before the joining story needs it.

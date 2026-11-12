@@ -10,3 +10,8 @@ export function formatGiftDay(isoDate: string): string {
 export function groupInfoLine(budget: string, giftDay: string): string {
   return fill(copy.group.info, { budget, day: formatGiftDay(giftDay) });
 }
+
+/** "1 name" or "3 names". */
+export function namesCount(n: number): string {
+  return fill(n === 1 ? copy.names.one : copy.names.many, { n: String(n) });
+}
