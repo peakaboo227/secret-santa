@@ -49,7 +49,14 @@ export function CreateGroupForm() {
     setErrors(found);
     if (hasErrors(found)) return;
     startTransition(async () => {
-      const result = await saveGroupAction({ groupId: saved?.groupId, groupName, budget, giftDay, hostName, playing });
+      let result;
+      try {
+        result = await saveGroupAction({ groupId: saved?.groupId, groupName, budget, giftDay, hostName, playing });
+      } catch (error) {
+        // No message for this in the prototype yet: stay on step 2 so the host can try again.
+        console.error(error);
+        return;
+      }
       if (result.ok) {
         setSaved({ groupId: result.groupId, pin: result.pin });
         setStep(3);
