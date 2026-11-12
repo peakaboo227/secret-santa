@@ -77,6 +77,32 @@ export const copy = {
     body: "your santa will see {character} and your wishlist, never your name.",
     continue: "continue",
   },
+  /** instructions (prototype/Instructions.dc.html). The same for every group. */
+  instructions: {
+    heading: "how it works",
+    intro: "you can open this again from the menu.",
+    illustration: "[illustration]",
+    steps: [
+      {
+        title: "write your wishlist",
+        body: "add a few wishes so your santa knows what you’d like. you can change them any time.",
+      },
+      {
+        title: "wait for the draw",
+        body: "once everyone has joined, your host draws names. nobody, not even the host, sees who has who.",
+      },
+      {
+        title: "find your giftee’s gift",
+        body: "you’ll see your giftee’s character and wishlist. tap “i’m preparing the gift” so they know not to change it.",
+      },
+      {
+        title: "bring it on gift day",
+        body: "at the party, guess who your santa is before the reveal.",
+      },
+    ],
+    toManage: "go to the manage page",
+    toWishlist: "start my wishlist",
+  },
   /** link not found (prototype/NotFound.dc.html) */
   notFound: {
     petLabel: "a sleepy member",
