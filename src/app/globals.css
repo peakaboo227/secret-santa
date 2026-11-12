@@ -66,3 +66,181 @@ body {
 .home-line {
   color: var(--ink-2);
 }
+
+/*
+ * Sizes the prototype uses that the boo design system has no token for yet.
+ * Defined once here so screens still go through var(--…). Candidates to add to boo itself.
+ */
+:root {
+  --space-6: 6px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-18: 18px;
+  --column-width: 440px;
+  --touch-min: 44px;
+  --touch-row: 48px;
+  --checkbox-size: 22px;
+  --pin-size: 36px;
+  --icon-lg: 24px;
+  --dead-end-text: 300px;
+}
+
+/* Phone screens (prototype): a centred 440px column, the wordmark first, the ground last. */
+.screen:has(> .col) {
+  align-items: center;
+}
+
+.col {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--column-width);
+  flex-grow: 1;
+  padding: var(--space-22) var(--space-22) var(--space-16);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-22);
+  color: var(--ink);
+}
+
+/* A form's parts sit directly in the column, so the column's gap spaces them. */
+.col-form {
+  display: contents;
+}
+
+.grow {
+  flex-grow: 1;
+}
+
+.muted,
+.intro .eyebrow,
+.intro .body-sm,
+.form-row > .label {
+  color: var(--ink-2);
+}
+
+.centred {
+  text-align: center;
+}
+
+.intro,
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.col h1 {
+  margin: 0;
+}
+
+.col .back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-height: var(--touch-min);
+  width: fit-content;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: var(--ink-2);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.col .wide {
+  box-sizing: border-box;
+  width: 100%;
+  text-decoration: none;
+  color: var(--on-action);
+}
+
+.field-error {
+  color: var(--warm13-ink);
+}
+
+/* Gift day: the native date picker, with the gold pixel calendar over its own icon. */
+.date-field {
+  position: relative;
+}
+
+.date-field input[type="date"] {
+  color-scheme: dark;
+  accent-color: var(--action);
+  min-height: var(--touch-row);
+}
+
+.date-field input[type="date"]::-webkit-datetime-edit {
+  color: var(--ink);
+}
+
+.date-field input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+  padding: 0;
+}
+
+.date-field input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0;
+  width: var(--icon-lg);
+  height: var(--icon-lg);
+}
+
+.date-field-icon {
+  position: absolute;
+  right: var(--space-14);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  color: var(--action);
+  pointer-events: none;
+}
+
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  min-height: var(--touch-row);
+  box-sizing: border-box;
+  padding: var(--space-10) var(--space-14);
+  background: var(--panel);
+  border: var(--stroke-ui) solid var(--border-soft);
+  border-radius: var(--radius-panel);
+  cursor: pointer;
+}
+
+.check-row input {
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
+  margin: 0;
+  accent-color: var(--action);
+}
+
+.pin-box {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-18);
+  background: var(--panel);
+  border: var(--stroke-heavy) solid var(--action);
+  border-radius: var(--radius-door);
+}
+
+.pin-digits {
+  font-size: var(--pin-size);
+  letter-spacing: 0.3em;
+}
+
+/* link not found */
+.dead-end {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-14);
+  text-align: center;
+}
+
+.dead-end p {
+  margin: 0;
+  max-width: var(--dead-end-text);
+  color: var(--ink-2);
+}

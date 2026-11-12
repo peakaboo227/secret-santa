@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { copy } from "@/copy";
-import { hashPin, hashToken, verifyPin } from "@/server/crypto";
+import { hashToken, isValidPin, makeGameCode, makePin } from "@/server/crypto";
 import { buildComponentsCss, SOURCE, TARGET } from "../scripts/sync-design-system.mjs";
 
 function strings(value: unknown): string[] {
@@ -22,11 +22,10 @@ describe("project setup", () => {
     expect(actual).not.toMatch(/fonts\.googleapis|https?:\/\//);
   });
 
-  it("hashes pins and never stores them in plain text", async () => {
-    const stored = await hashPin("0427");
-    expect(stored).not.toContain("0427");
-    expect(await verifyPin("0427", stored)).toBe(true);
-    expect(await verifyPin("0428", stored)).toBe(false);
+  it("makes 4-digit pins and long game codes", () => {
+    for (let i = 0; i < 200; i++) expect(isValidPin(makePin())).toBe(true);
+    expect(makeGameCode()).toMatch(/^[a-z0-9]{10}$/);
+    expect(makeGameCode()).not.toBe(makeGameCode());
   });
 
   it("hashes device tokens", () => {

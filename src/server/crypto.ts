@@ -1,32 +1,22 @@
 import "server-only";
-import { createHash, createHmac, randomBytes, scrypt, timingSafeEqual } from "node:crypto";
-
-const SCRYPT_KEYLEN = 32;
-
-function scryptAsync(secret: string, salt: Buffer): Promise<Buffer> {
-  return new Promise((resolve, reject) =>
-    scrypt(secret, salt, SCRYPT_KEYLEN, { N: 16384, r: 8, p: 1 }, (err, key) => (err ? reject(err) : resolve(key))),
-  );
-}
+import { createHash, createHmac, randomBytes, randomInt, timingSafeEqual } from "node:crypto";
 
 export function isValidPin(pin: string): boolean {
   return /^\d{4}$/.test(pin);
 }
 
-/** Hash a 4-digit PIN as "scrypt$<salt>$<hash>" (base64url). */
-export async function hashPin(pin: string): Promise<string> {
-  if (!isValidPin(pin)) throw new Error("pin must be 4 digits");
-  const salt = randomBytes(16);
-  const key = await scryptAsync(pin, salt);
-  return `scrypt$${salt.toString("base64url")}$${key.toString("base64url")}`;
+/** A random 4-digit PIN, "0000" to "9999". */
+export function makePin(): string {
+  return String(randomInt(0, 10000)).padStart(4, "0");
 }
 
-export async function verifyPin(pin: string, stored: string): Promise<boolean> {
-  const [algo, saltB64, keyB64] = stored.split("$");
-  if (algo !== "scrypt" || !saltB64 || !keyB64 || !isValidPin(pin)) return false;
-  const expected = Buffer.from(keyB64, "base64url");
-  const actual = await scryptAsync(pin, Buffer.from(saltB64, "base64url"));
-  return expected.length === actual.length && timingSafeEqual(expected, actual);
+const CODE_ALPHABET = "abcdefghijklmnopqrstuvwxyz0123456789";
+
+/** The random part of a game link (/g/<code>): lowercase letters and digits, hard to guess. */
+export function makeGameCode(length = 10): string {
+  let code = "";
+  for (let i = 0; i < length; i++) code += CODE_ALPHABET[randomInt(0, CODE_ALPHABET.length)];
+  return code;
 }
 
 /** A random token for a device cookie or a game code. */

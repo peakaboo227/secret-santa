@@ -50,8 +50,12 @@ export const members = pgTable(
     groupId: groupRef(),
     /** Exactly as the host typed it. Never shown to the member's santa. */
     realName: text("real_name").notNull(),
-    /** scrypt hash, never the PIN itself. Null until the member joins. */
-    pinHash: text("pin_hash"),
+    /**
+     * The 4-digit PIN the app made for this name. Kept readable on purpose: the host's PIN list shows it
+     * so the host can send it (H2). Server code only ever returns it to a device that may manage the group.
+     */
+    pin: text("pin").notNull(),
+    /** Pets can be shared within a group; the pet name is what tells members apart. */
     pet: text("pet"),
     petName: text("pet_name"),
     isHost: boolean("is_host").notNull().default(false),
@@ -64,8 +68,9 @@ export const members = pgTable(
   },
   (t) => [
     uniqueIndex("members_group_real_name_uq").on(t.groupId, t.realName),
-    // One pet per group, so a pet is enough to tell members apart. Nulls (not joined yet) don't clash.
-    uniqueIndex("members_group_pet_uq").on(t.groupId, t.pet),
+    // Two people can pick the same pet, but each pet name is used once per group.
+    // Nulls (not joined yet) don't clash.
+    uniqueIndex("members_group_pet_name_uq").on(t.groupId, t.petName),
     index("members_group_idx").on(t.groupId),
   ],
 );

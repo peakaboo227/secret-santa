@@ -2,6 +2,23 @@
 
 Newest first. Each entry: what was decided, and why.
 
+## 2026-11-12: create a group (H1)
+
+- **Only the owner link can create groups** (product owner's call): `/new` checks the owner cookie; any other
+  device gets "link not found". The app home will hide "create a group" for those devices (step 4).
+- **PINs are stored readable**, in `members.pin`, not as a hash: the host's PIN list (H2) has to show them.
+  Only server code returns them, and only to a device that may manage the group. Replaces the scrypt hash.
+- **Pets can be shared; pet names are unique per group** (product decision "pets are shared"). The unique index
+  moved from `pet` to `pet_name`.
+- **Pet names, v1:** the 10 from the prototype (bánh bao, mochi, xôi, bơ, cốm, kem, mít, na, su, tép). The product
+  owner will grow the list to 30+ later.
+- **The group is saved when step 2 of create group continues**, so step 3 shows a real PIN. Going back and
+  continuing again updates the same group and keeps the PIN.
+- **Gift day "not in the past"**: the browser checks the device's own today; the server only refuses a day that
+  is over everywhere on earth, since it doesn't know the host's time zone.
+- **Prototype sizes without a boo token** (6, 12, 16, 18 px spacing, the 440px column, the 36px PIN) are named once
+  in `src/app/globals.css`. Candidates to add to the design system.
+
 ## 2026-11-12: prototype in the repo
 
 - The approved design ("secret santa mockup" canvas, page "prototype · pass 2" plus "night kit") is copied byte
