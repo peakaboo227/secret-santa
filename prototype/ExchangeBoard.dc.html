@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>gift exchange board</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/pawker/tokens.css">
+<link rel="stylesheet" href="ds/pawker/components/bundle.css">
+<script src="ds/pawker/components/bundle.js"></script>
+<link rel="stylesheet" href="night.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@700&amp;family=Merriweather+Sans:wght@700&amp;family=Inter:wght@400;700&amp;family=Barlow:wght@400&amp;display=swap">
+<style>
+body{margin:0;background:#1C4F31}
+a{color:#F5CF6E}a:hover{color:#FFF6DF}
+.ss-row:hover{border-color:var(--border)}
+.ss-tile:hover{border-color:var(--border)}
+</style>
+</helmet>
+<div data-theme="christmas" data-panel="{{panel}}" style="isolation: isolate; --font-display: 'Be Vietnam Pro', 'Merriweather Sans', sans-serif; width: 100%; height: 844px; overflow: hidden; position: relative; box-sizing: border-box; background: var(--page); font-family: var(--font-sans); color: var(--ink); display: flex; flex-direction: column; align-items: center">
+<div aria-hidden="true" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: -1; overflow: hidden; pointer-events: none"><dc-import name="SceneSky" hint-size="100%,100%"></dc-import></div>
+<div style="box-sizing: border-box; width: 100%; max-width: 440px; padding: 18px 22px 8px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; align-items: center; gap: 11px"><span style="box-sizing: border-box; width: 24px; height: 32px; display: flex; align-items: center; justify-content: center; background: var(--panel-inner); border: 2px solid var(--action); border-radius: 6px; box-shadow: var(--shadow-mark)"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" shape-rendering="crispEdges"><rect x="1" y="5" width="10" height="6" fill="var(--action)"></rect><rect x="0" y="3" width="12" height="2" fill="var(--action)"></rect><rect x="5" y="3" width="2" height="8" fill="#D6455A"></rect><rect x="3" y="1" width="2" height="2" fill="#D6455A"></rect><rect x="7" y="1" width="2" height="2" fill="#D6455A"></rect></svg></span><span class="wordmark" style="color: var(--ink)">secret santa</span></div>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<span class="eyebrow" style="color: var(--ink-2)">christmas 2026</span>
+<h1 class="headline" style="margin: 0; font-size: 24px">gift exchange</h1>
+<span class="note-lg" style="color: var(--ink-2)">one row per giftee. mark each gift handed or skipped, then pick who they think their santa is.</span>
+</div>
+</div>
+<main style="box-sizing: border-box; width: 100%; flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; align-items: center">
+<div style="box-sizing: border-box; width: 100%; max-width: 440px; flex: 1 0 auto; padding: 0 22px 24px; display: flex; flex-direction: column; gap: 10px">
+<a href="Manage.dc.html" class="label" style="display: inline-flex; align-items: center; gap: 4px; min-height: 44px; width: fit-content; text-decoration: none; color: var(--ink-2)"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" shape-rendering="crispEdges" fill="currentColor"><path d="M6 2h2v1h-2zM5 3h2v1h-2zM4 4h2v1h-2zM3 5h2v1h-2zM3 6h2v1h-2zM4 7h2v1h-2zM5 8h2v1h-2zM6 9h2v1h-2z"></path></svg><span>manage</span></a>
+<ul aria-label="giftees" style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="10">
+<li style="display: flex; flex-direction: column; gap: 10px; padding: 12px; background: var(--panel); border: 2px solid var(--border-soft); border-radius: var(--radius-panel); box-shadow: var(--shadow-panel)">
+<div style="display: flex; align-items: center; gap: 10px">
+<x-import component-from-global-scope="Pawker.Pet" slug="{{r.slug}}" state="still" size="{{s40}}" label="{{r.pet}}"></x-import>
+<span class="field" style="flex-grow: 1">{{r.pet}}</span>
+<div role="group" aria-label="{{r.groupLabel}}" style="display: flex; gap: 6px">
+<button type="button" class="pk-btn pk-btn-utility pk-tone-neutral" aria-pressed="{{r.handedPressed}}" onClick="{{r.hand}}" style="min-height: 44px; {{r.handedStyle}}"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" shape-rendering="crispEdges" fill="currentColor"><path d="M9 2h2v1h-2zM8 3h2v1h-2zM7 4h2v1h-2zM0 5h2v1h-2zM6 5h2v1h-2zM1 6h2v1h-2zM5 6h2v1h-2zM2 7h4v1h-4zM3 8h2v1h-2z"></path></svg>handed</button>
+<button type="button" class="pk-btn pk-btn-utility pk-tone-neutral" aria-pressed="{{r.skipPressed}}" onClick="{{r.skip}}" style="min-height: 40px; {{r.skipStyle}}">skip</button>
+</div>
+</div>
+<sc-if value="{{r.handed}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; align-items: center; gap: 10px">
+<label for="{{r.selId}}" class="label" style="flex: none; color: var(--ink-2)">their guess</label>
+<select id="{{r.selId}}" value="{{r.guess}}" onChange="{{r.onGuess}}" style="box-sizing: border-box; width: 100%; min-height: 44px; padding: 8px 10px; background: var(--white); border: 2px solid var(--border); border-radius: var(--radius-field); color: var(--ink); font-family: var(--font-sans); font-weight: 700; font-size: 14px">
+<option value="">no guess yet</option>
+<sc-for list="{{r.opts}}" as="o" hint-placeholder-count="9"><option value="{{o}}">{{o}}</option></sc-for>
+</select>
+</div>
+</sc-if>
+</li>
+</sc-for>
+</ul>
+</div>
+<div aria-hidden="true" style="width: 100%; flex: none; margin-top: auto"><dc-import name="SceneGround" hint-size="100%,96px"></dc-import></div>
+</main>
+<div style="box-sizing: border-box; width: 100%; flex: none; display: flex; justify-content: center; background: var(--panel); border-top: 2px solid var(--border-soft)">
+<div style="box-sizing: border-box; width: 100%; max-width: 440px; padding: 12px 22px 16px; display: flex; flex-direction: column; gap: 8px">
+<span class="note-lg" style="color: var(--ink-2); text-align: center">{{progress}}</span>
+<sc-if value="{{allDone}}" hint-placeholder-val="{{false}}">
+<a href="HostReveal.dc.html" class="pk-btn pk-btn-primary" style="box-sizing: border-box; width: 100%; text-decoration: none">start the reveal</a>
+</sc-if>
+<sc-if value="{{notDone}}" hint-placeholder-val="{{true}}">
+<button type="button" class="pk-btn pk-btn-primary" disabled style="width: 100%">start the reveal</button>
+</sc-if>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"panel":{"editor":"enum","options":["auto","pine","frosted glass"],"default":"auto","section":"theme"},"start":{"editor":"enum","options":["fresh","ready to reveal"],"default":"fresh","section":"prototype state"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+data() { return [{"santa": "lan", "giftee": "duy", "pet": "mochi", "slug": "ferret-silver", "guess": "lan"}, {"santa": "duy", "giftee": "thảo", "pet": "xôi", "slug": "kitten-calico", "guess": "an"}, {"santa": "thảo", "giftee": "bảo", "pet": "bơ", "slug": "dog-shiba", "guess": "thảo"}, {"santa": "bảo", "giftee": "lan", "pet": "bánh bao", "slug": "rabbit-white", "guess": "bảo"}, {"santa": "an", "giftee": "chi", "pet": "cốm", "slug": "guineapig-tri", "guess": ""}, {"santa": "chi", "giftee": "hà", "pet": "kem", "slug": "kitten-slate", "guess": "minh"}, {"santa": "hà", "giftee": "minh", "pet": "mít", "slug": "dog-husky", "guess": "hà"}, {"santa": "minh", "giftee": "my", "pet": "na", "slug": "rabbit-caramel", "guess": "quân"}, {"santa": "my", "giftee": "quân", "pet": "su", "slug": "ferret-champagne", "guess": "my"}, {"santa": "quân", "giftee": "an", "pet": "tép", "slug": "guineapig-agouti", "guess": "chi"}]; }
+renderVals() {
+const S = this.state || {};
+const set = (o) => this.setState(o);
+const names = ["thảo", "an", "bảo", "chi", "duy", "hà", "lan", "minh", "my", "quân"];
+const ready = (this.props.start ?? "fresh") === "ready to reveal";
+const st = S.st || {};
+const on = "background: var(--action); border-color: var(--action-dark); color: var(--on-action);";
+let done = 0;
+const rows = this.data().map((p, i) => {
+  const def = ready ? { mode: p.guess ? "handed" : "skip", guess: p.guess } : { mode: "", guess: "" };
+  const r = Object.assign({}, def, st[i] || {});
+  if (r.mode) done += 1;
+  const put = (o) => set({ st: Object.assign({}, st, { [i]: Object.assign({}, r, o) }) });
+  return {
+    pet: p.pet, slug: p.slug, groupLabel: "gift for " + p.pet, selId: "g" + i,
+    handed: r.mode === "handed", guess: r.guess || "",
+    handedPressed: r.mode === "handed" ? "true" : "false", skipPressed: r.mode === "skip" ? "true" : "false",
+    handedStyle: r.mode === "handed" ? on : "", skipStyle: r.mode === "skip" ? on : "",
+    hand: () => put({ mode: r.mode === "handed" ? "" : "handed" }),
+    skip: () => put({ mode: r.mode === "skip" ? "" : "skip", guess: "" }),
+    onGuess: (e) => put({ guess: e.target.value }),
+    opts: names.filter((n) => n !== p.giftee)
+  };
+});
+const total = rows.length;
+const panelPick = this.props.panel ?? "auto";
+const panel = panelPick === "pine" ? "pine" : panelPick === "frosted glass" ? "glass" : "glass";
+return { panel,  rows, s40: 40, allDone: done === total, notDone: done < total,
+  progress: done === total ? "every gift is handed or skipped" : done + " of " + total + " gifts handed or skipped" };
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>host · choose your pet</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/pawker/tokens.css">
+<link rel="stylesheet" href="ds/pawker/components/bundle.css">
+<script src="ds/pawker/components/bundle.js"></script>
+<link rel="stylesheet" href="night.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@700&amp;family=Merriweather+Sans:wght@700&amp;family=Inter:wght@400;700&amp;family=Barlow:wght@400&amp;display=swap">
+<style>
+body{margin:0;background:#1C4F31}
+a{color:#F5CF6E}a:hover{color:#FFF6DF}
+.ss-row:hover{border-color:var(--border)}
+.ss-tile:hover{border-color:var(--border)}
+</style>
+</helmet>
+<dc-import name="ChoosePet" flow="host playing" hint-size="100%,844px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

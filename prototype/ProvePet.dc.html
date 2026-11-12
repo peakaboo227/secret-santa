@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>pick your pet to prove it’s you</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/pawker/tokens.css">
+<link rel="stylesheet" href="ds/pawker/components/bundle.css">
+<script src="ds/pawker/components/bundle.js"></script>
+<link rel="stylesheet" href="night.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@700&amp;family=Merriweather+Sans:wght@700&amp;family=Inter:wght@400;700&amp;family=Barlow:wght@400&amp;display=swap">
+<style>
+body{margin:0;background:#1C4F31}
+a{color:#F5CF6E}a:hover{color:#FFF6DF}
+.ss-row:hover{border-color:var(--border)}
+.ss-tile:hover{border-color:var(--border)}
+</style>
+</helmet>
+<div data-theme="christmas" data-panel="{{panel}}" style="isolation: isolate; --font-display: 'Be Vietnam Pro', 'Merriweather Sans', sans-serif; width: 100%; min-height: 844px; position: relative; box-sizing: border-box; background: var(--page); font-family: var(--font-sans); color: var(--ink); display: flex; flex-direction: column; align-items: center">
+<div aria-hidden="true" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: -1; overflow: hidden; pointer-events: none"><dc-import name="SceneSky" hint-size="100%,100%"></dc-import></div>
+<div style="box-sizing: border-box; width: 100%; max-width: 440px; padding: 22px 22px 16px; display: flex; flex-direction: column; gap: 22px; flex-grow: 1">
+<div style="display: flex; flex-direction: column; gap: 8px"><div style="display: flex; align-items: center; gap: 11px"><span style="box-sizing: border-box; width: 24px; height: 32px; display: flex; align-items: center; justify-content: center; background: var(--panel-inner); border: 2px solid var(--action); border-radius: 6px; box-shadow: var(--shadow-mark)"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" shape-rendering="crispEdges"><rect x="1" y="5" width="10" height="6" fill="var(--action)"></rect><rect x="0" y="3" width="12" height="2" fill="var(--action)"></rect><rect x="5" y="3" width="2" height="8" fill="#D6455A"></rect><rect x="3" y="1" width="2" height="2" fill="#D6455A"></rect><rect x="7" y="1" width="2" height="2" fill="#D6455A"></rect></svg></span><span class="wordmark" style="color: var(--ink)">secret santa</span></div><div style="display: flex; flex-direction: column; gap: 2px; padding-left: 35px"><span class="title" style="color: var(--ink)">christmas 2026</span><span class="note-lg" style="color: var(--ink-2)">budget 300k · gift day 24 dec</span></div></div>
+<a href="EnterPin.dc.html" class="label" style="display: inline-flex; align-items: center; gap: 4px; min-height: 44px; width: fit-content; text-decoration: none; color: var(--ink-2)"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" shape-rendering="crispEdges" fill="currentColor"><path d="M6 2h2v1h-2zM5 3h2v1h-2zM4 4h2v1h-2zM3 5h2v1h-2zM3 6h2v1h-2zM4 7h2v1h-2zM5 8h2v1h-2zM6 9h2v1h-2z"></path></svg><span>back</span></a>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 class="headline" style="margin: 0">welcome back, lan</h1>
+<span class="body-sm" style="color: var(--ink-2)">pick the pet you chose when you joined. you have 5 tries. after 5 wrong tries, this name is blocked for 4 hours.</span>
+</div>
+<sc-if value="{{open}}" hint-placeholder-val="{{true}}">
+<sc-if value="{{missed}}" hint-placeholder-val="{{false}}">
+<span role="status" class="label" style="color: var(--warm13-ink)">that’s not your pet. {{left}} tries left.</span>
+</sc-if>
+<div aria-label="pets" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{pets}}" as="p" hint-placeholder-count="20">
+<sc-if value="{{p.right}}" hint-placeholder-val="{{false}}">
+<a href="{{landHref}}" aria-label="{{p.aria}}" class="ss-tile" style="box-sizing: border-box; width: 100%; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; background: var(--panel); border-radius: var(--radius-panel); cursor: pointer; padding: 0; border: 2px solid var(--border-soft); box-shadow: var(--shadow-panel)">
+<x-import component-from-global-scope="Pawker.Pet" slug="{{p.slug}}" state="still" size="{{s48}}" label="{{p.aria}}"></x-import>
+</a>
+</sc-if>
+<sc-if value="{{p.wrongTile}}" hint-placeholder-val="{{true}}">
+<button type="button" aria-label="{{p.aria}}" onClick="{{p.miss}}" class="ss-tile" style="box-sizing: border-box; width: 100%; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; background: var(--panel); border-radius: var(--radius-panel); cursor: pointer; padding: 0; border: 2px solid var(--border-soft); box-shadow: var(--shadow-panel)">
+<x-import component-from-global-scope="Pawker.Pet" slug="{{p.slug}}" state="still" size="{{s48}}" label="{{p.aria}}"></x-import>
+</button>
+</sc-if>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{blocked}}" hint-placeholder-val="{{false}}">
+<x-import component-from-global-scope="Pawker.Panel" size="room">
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 16px">
+<span class="field" style="display: flex; align-items: center; gap: 8px"><span style="display: flex; color: var(--action)"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 12 12" shape-rendering="crispEdges" fill="currentColor"><path d="M4 1h4v1h-4zM3 2h1v1h-1zM8 2h1v1h-1zM3 3h1v1h-1zM8 3h1v1h-1zM2 4h8v1h-8zM2 5h8v1h-8zM2 6h3v1h-3zM7 6h3v1h-3zM2 7h3v1h-3zM7 7h3v1h-3zM2 8h8v1h-8zM2 9h8v1h-8z"></path></svg></span>too many wrong tries</span>
+<span class="body-sm" style="color: var(--ink-2)">this name is blocked until 18:40. never joined on another device? tell your host.</span>
+</div>
+</x-import>
+</sc-if>
+</div>
+<div aria-hidden="true" style="width: 100%; flex: none; margin-top: auto"><dc-import name="SceneGround" hint-size="100%,96px"></dc-import></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"panel":{"editor":"enum","options":["auto","pine","frosted glass"],"default":"auto","section":"theme"},"who":{"editor":"enum","options":["participant","host"],"default":"participant","section":"prototype state"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+const misses = (this.state && this.state.misses) || 0;
+const pets = ["kitten-ginger", "kitten-slate", "kitten-tuxedo", "kitten-calico", "dog-shiba", "dog-husky", "dog-basenji", "dog-pharaoh", "rabbit-caramel", "rabbit-grey", "rabbit-cinnamon", "rabbit-white", "guineapig-ginger", "guineapig-tan", "guineapig-tri", "guineapig-agouti", "ferret-white", "ferret-champagne", "ferret-silver", "ferret-chocolate"].map((slug, i) => ({
+  slug, aria: "pet " + (i + 1), right: slug === "rabbit-white", wrongTile: slug !== "rabbit-white",
+  miss: () => this.setState({ misses: misses + 1 })
+}));
+const panelPick = this.props.panel ?? "auto";
+const panel = panelPick === "pine" ? "pine" : panelPick === "frosted glass" ? "glass" : "glass";
+return { panel,  landHref: (this.props.who ?? "participant") === "host" ? "Manage.dc.html" : "MySpace.dc.html", pets, misses, left: 5 - misses, missed: misses > 0 && misses < 5, open: misses < 5, blocked: misses >= 5, s48: 48 };
+}
+}
+</script>
+</body>
+</html>

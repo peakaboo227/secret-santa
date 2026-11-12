@@ -2,6 +2,12 @@
 
 Newest first. Each entry: what was decided, and why.
 
+## 2026-11-12: prototype in the repo
+
+- The approved design ("secret santa mockup" canvas, page "prototype · pass 2" plus "night kit") is copied byte
+  for byte into `prototype/`, so cloud sessions can read it. It's the spec: screens match it exactly. The older
+  "explorations" page is left out on purpose, so no one builds an outdated option.
+
 ## 2026-11-12: notion permissions
 
 - `.claude/settings.json` lets Claude search, read, edit and create Notion pages without an "allow" prompt, so the product owner's project docs can be updated on request. Deleting, moving and sharing pages still ask. The rule only applies in sessions that have just this repo.

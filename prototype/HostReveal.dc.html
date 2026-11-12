@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>reveal</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/pawker/tokens.css">
+<link rel="stylesheet" href="ds/pawker/components/bundle.css">
+<script src="ds/pawker/components/bundle.js"></script>
+<link rel="stylesheet" href="night.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@700&amp;family=Merriweather+Sans:wght@700&amp;family=Inter:wght@400;700&amp;family=Barlow:wght@400&amp;display=swap">
+<style>
+body{margin:0;background:#1C4F31}
+a{color:#F5CF6E}a:hover{color:#FFF6DF}
+.ss-row:hover{border-color:var(--border)}
+.ss-tile:hover{border-color:var(--border)}
+</style>
+</helmet>
+<div data-theme="christmas" data-panel="{{panel}}" style="isolation: isolate; --font-display: 'Be Vietnam Pro', 'Merriweather Sans', sans-serif; width: 100%; min-height: 844px; position: relative; box-sizing: border-box; background: var(--page); font-family: var(--font-sans); color: var(--ink); display: flex; flex-direction: column; align-items: center">
+<div aria-hidden="true" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: -1; overflow: hidden; pointer-events: none"><dc-import name="SceneSky" hint-size="100%,100%"></dc-import></div>
+<div style="box-sizing: border-box; width: 100%; max-width: 440px; padding: 22px 22px 16px; display: flex; flex-direction: column; gap: 22px; flex-grow: 1">
+<div style="display: flex"><div style="display: flex; align-items: center; gap: 11px"><span style="box-sizing: border-box; width: 24px; height: 32px; display: flex; align-items: center; justify-content: center; background: var(--panel-inner); border: 2px solid var(--action); border-radius: 6px; box-shadow: var(--shadow-mark)"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" shape-rendering="crispEdges"><rect x="1" y="5" width="10" height="6" fill="var(--action)"></rect><rect x="0" y="3" width="12" height="2" fill="var(--action)"></rect><rect x="5" y="3" width="2" height="8" fill="#D6455A"></rect><rect x="3" y="1" width="2" height="2" fill="#D6455A"></rect><rect x="7" y="1" width="2" height="2" fill="#D6455A"></rect></svg></span><span class="wordmark" style="color: var(--ink)">secret santa</span></div></div>
+<sc-if value="{{playingPair}}" hint-placeholder-val="{{true}}">
+<div style="display: flex; justify-content: space-between; align-items: baseline">
+<span class="eyebrow" style="color: var(--ink-2)">reveal</span>
+<span class="label" style="color: var(--ink-2)">pair {{num}} of {{total}}</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; padding-top: 12px">
+<x-import component-from-global-scope="Pawker.Pet" slug="{{p.slug}}" state="bob" size="{{s120}}" label="{{p.pet}}"></x-import>
+<h1 class="headline" style="margin: 0">who is {{p.pet}}’s santa?</h1>
+<span class="body" style="color: var(--ink-2)">{{guessLine}}</span>
+</div>
+<sc-if value="{{shown}}" hint-placeholder-val="{{false}}">
+<div role="status" style="display: flex; flex-direction: column; gap: 12px; align-items: center">
+<x-import component-from-global-scope="Pawker.Chip" tone="{{resultTone}}">{{resultLabel}}</x-import>
+<div style="box-sizing: border-box; width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<div style="display: flex; flex-direction: column; gap: 4px; align-items: center; padding: 14px; background: var(--panel); border: 3px solid var(--action); border-radius: var(--radius-door)">
+<span class="eyebrow" style="color: var(--ink-2)">santa</span>
+<span class="headline" style="font-size: 24px">{{p.santa}}</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px; align-items: center; padding: 14px; background: var(--panel); border: 2px solid var(--border-soft); border-radius: var(--radius-door)">
+<span class="eyebrow" style="color: var(--ink-2)">{{p.pet}} is</span>
+<span class="headline" style="font-size: 24px">{{p.giftee}}</span>
+</div>
+</div>
+</div>
+</sc-if>
+<div style="flex-grow: 1"></div>
+<sc-if value="{{hidden}}" hint-placeholder-val="{{true}}">
+<button type="button" class="pk-btn pk-btn-primary" onClick="{{reveal}}" style="width: 100%">reveal</button>
+</sc-if>
+<sc-if value="{{shown}}" hint-placeholder-val="{{false}}">
+<button type="button" class="pk-btn pk-btn-primary" onClick="{{next}}" style="width: 100%">{{nextLabel}}</button>
+</sc-if>
+</sc-if>
+<sc-if value="{{finished}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span class="eyebrow" style="color: var(--ink-2)">reveal done</span>
+<h1 class="headline" style="margin: 0">{{score}}</h1>
+</div>
+<ul aria-label="all pairs" style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{summary}}" as="s" hint-placeholder-count="10">
+<li style="display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: var(--panel); border: 2px solid var(--border-soft); border-radius: var(--radius-panel)">
+<span class="label" style="flex-grow: 1">{{s.line}}</span>
+<x-import component-from-global-scope="Pawker.Chip" tone="{{s.tone}}">{{s.label}}</x-import>
+</li>
+</sc-for>
+</ul>
+<a href="Manage.dc.html" class="pk-btn pk-btn-utility pk-tone-neutral" style="text-decoration: none; min-height: 44px; align-self: center">back to manage</a>
+</sc-if>
+</div>
+<div aria-hidden="true" style="width: 100%; flex: none; margin-top: auto"><dc-import name="SceneGround" hint-size="100%,96px"></dc-import></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"panel":{"editor":"enum","options":["auto","pine","frosted glass"],"default":"auto","section":"theme"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+data() { return [{"santa": "lan", "giftee": "duy", "pet": "mochi", "slug": "ferret-silver", "guess": "lan"}, {"santa": "duy", "giftee": "thảo", "pet": "xôi", "slug": "kitten-calico", "guess": "an"}, {"santa": "thảo", "giftee": "bảo", "pet": "bơ", "slug": "dog-shiba", "guess": "thảo"}, {"santa": "bảo", "giftee": "lan", "pet": "bánh bao", "slug": "rabbit-white", "guess": "bảo"}, {"santa": "an", "giftee": "chi", "pet": "cốm", "slug": "guineapig-tri", "guess": ""}, {"santa": "chi", "giftee": "hà", "pet": "kem", "slug": "kitten-slate", "guess": "minh"}, {"santa": "hà", "giftee": "minh", "pet": "mít", "slug": "dog-husky", "guess": "hà"}, {"santa": "minh", "giftee": "my", "pet": "na", "slug": "rabbit-caramel", "guess": "quân"}, {"santa": "my", "giftee": "quân", "pet": "su", "slug": "ferret-champagne", "guess": "my"}, {"santa": "quân", "giftee": "an", "pet": "tép", "slug": "guineapig-agouti", "guess": "chi"}]; }
+renderVals() {
+const S = this.state || {};
+const set = (o) => this.setState(o);
+const pairs = this.data();
+const i = S.i || 0, shown = !!S.shown;
+const total = pairs.length;
+const res = (p) => (!p.guess ? ["gift skipped", "neutral"] : p.guess === p.santa ? ["guessed right", "action"] : ["not this time", "neutral"]);
+const p = pairs[Math.min(i, total - 1)];
+const r = res(p);
+const guessed = pairs.filter((x) => x.guess);
+const right = guessed.filter((x) => x.guess === x.santa).length;
+const panelPick = this.props.panel ?? "auto";
+const panel = panelPick === "pine" ? "pine" : panelPick === "frosted glass" ? "glass" : "glass";
+return { panel, 
+  playingPair: i < total, finished: i >= total, p, num: i + 1, total, s120: 120,
+  guessLine: p.guess ? "they guessed " + p.guess : "this gift was skipped, so there’s no guess",
+  shown, hidden: !shown, resultLabel: r[0], resultTone: r[1],
+  reveal: () => set({ shown: true }),
+  next: () => set({ i: i + 1, shown: false }),
+  nextLabel: i + 1 < total ? "next pair" : "see everyone",
+  score: right + " of " + guessed.length + " guessed their santa",
+  summary: pairs.map((x) => { const q = res(x); return { line: x.santa + " gave to " + x.giftee + " (" + x.pet + ")", label: q[0], tone: q[1] }; })
+};
+}
+}
+</script>
+</body>
+</html>
