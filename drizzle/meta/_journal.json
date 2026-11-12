@@ -8,6 +8,20 @@
       "when": 1794468409576,
       "tag": "0000_init",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794503569269,
+      "tag": "0001_yellow_doomsday",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794503570015,
+      "tag": "0002_woozy_queen_noir",
+      "breakpoints": true
     }
   ]
 }
