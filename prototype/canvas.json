@@ -1,0 +1,523 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Details.dc.html": {
+      "h": 844,
+      "title": "host · budget and gift day (b · deep pine)",
+      "w": 390,
+      "x": 470,
+      "y": 0,
+      "page": "explore"
+    },
+    "Join.dc.html": {
+      "h": 844,
+      "title": "friend · join from the link (d · frosted glass)",
+      "w": 390,
+      "x": 0,
+      "y": 1264,
+      "page": "explore"
+    },
+    "Main.dc.html": {
+      "h": 844,
+      "title": "host · name the group (d · frosted glass)",
+      "w": 390,
+      "x": 0,
+      "y": 0,
+      "page": "explore"
+    },
+    "Members.dc.html": {
+      "h": 1000,
+      "title": "host · members and rules (5 · sage)",
+      "w": 390,
+      "x": 940,
+      "y": 0,
+      "page": "explore"
+    },
+    "PanelGlass.dc.html": {
+      "h": 844,
+      "title": "d · frosted glass panel",
+      "w": 390,
+      "x": 470,
+      "y": 3772,
+      "page": "explore"
+    },
+    "PanelPine.dc.html": {
+      "h": 844,
+      "title": "b · deep pine panel",
+      "w": 390,
+      "x": 0,
+      "y": 3772,
+      "page": "explore"
+    },
+    "Wishlist.dc.html": {
+      "h": 844,
+      "title": "friend · my wishlist (b · deep pine)",
+      "w": 390,
+      "x": 470,
+      "y": 1264,
+      "page": "explore"
+    },
+    "WishlistCream.dc.html": {
+      "h": 844,
+      "title": "1 · cream + pixel layer",
+      "w": 390,
+      "x": 0,
+      "y": 2528,
+      "page": "explore"
+    },
+    "WishlistEvergreen.dc.html": {
+      "h": 844,
+      "title": "3 · deep evergreen",
+      "w": 390,
+      "x": 940,
+      "y": 2528,
+      "page": "explore"
+    },
+    "WishlistEvergreenDark.dc.html": {
+      "h": 844,
+      "title": "5 · evergreen night, dark panels",
+      "w": 390,
+      "x": 1880,
+      "y": 2528,
+      "page": "explore"
+    },
+    "WishlistEvergreenNight.dc.html": {
+      "h": 844,
+      "title": "4 · evergreen night",
+      "w": 390,
+      "x": 1410,
+      "y": 2528,
+      "page": "explore"
+    },
+    "WishlistFrost.dc.html": {
+      "h": 844,
+      "title": "2 · frosty green + scene",
+      "w": 390,
+      "x": 470,
+      "y": 2528,
+      "page": "explore"
+    },
+    "PickName.dc.html": {
+      "x": 0,
+      "y": 0,
+      "w": 390,
+      "h": 844,
+      "title": "pick your name",
+      "page": "proto",
+      "is_interactive": true
+    },
+    "EnterPin.dc.html": {
+      "x": 470,
+      "y": 0,
+      "w": 390,
+      "h": 844,
+      "title": "enter pin",
+      "page": "proto",
+      "is_interactive": true
+    },
+    "ChoosePet.dc.html": {
+      "x": 940,
+      "y": 0,
+      "w": 390,
+      "h": 844,
+      "title": "choose your pet",
+      "page": "proto",
+      "is_interactive": true
+    },
+    "MeetPet.dc.html": {
+      "x": 1410,
+      "y": 0,
+      "w": 390,
+      "h": 844,
+      "title": "meet your pet",
+      "page": "proto",
+      "is_interactive": true
+    },
+    "Instructions.dc.html": {
+      "x": 1880,
+      "y": 0,
+      "w": 390,
+      "h": 844,
+      "title": "instructions · first time",
+      "page": "proto",
+      "is_interactive": true
+    },
+    "MySpace.dc.html": {
+      "x": 0,
+      "y": 1264,
+      "w": 390,
+      "h": 844,
+      "title": "my space · my wishlist",
+      "page": "proto",
+      "is_interactive": true
+    },
+    "MyGiftee.dc.html": {
+      "x": 470,
+      "y": 1264,
+      "w": 390,
+      "h": 844,
+      "title": "my space · my giftee",
+      "page": "proto",
+      "is_interactive": true
+    },
+    "InstructionsAgain.dc.html": {
+      "x": 2820,
+      "y": 1264,
+      "w": 390,
+      "h": 844,
+      "title": "instructions · reopened from menu",
+      "page": "proto",
+      "is_interactive": true
+    },
+    "ProvePet.dc.html": {
+      "x": 0,
+      "y": 2528,
+      "w": 390,
+      "h": 844,
+      "title": "new device · prove it’s you",
+      "page": "proto",
+      "is_interactive": true
+    },
+    "NotFound.dc.html": {
+      "x": 470,
+      "y": 2528,
+      "w": 390,
+      "h": 844,
+      "title": "link not found",
+      "page": "proto",
+      "is_interactive": true
+    },
+    "AppHome.dc.html": {
+      "x": 0,
+      "y": 3792,
+      "w": 390,
+      "h": 844,
+      "title": "app home",
+      "page": "proto",
+      "is_interactive": true
+    },
+    "CreateGroup.dc.html": {
+      "x": 470,
+      "y": 3792,
+      "w": 390,
+      "h": 844,
+      "title": "create group",
+      "page": "proto",
+      "is_interactive": true
+    },
+    "HostChoosePet.dc.html": {
+      "x": 940,
+      "y": 3792,
+      "w": 390,
+      "h": 844,
+      "title": "host · choose your pet",
+      "page": "proto",
+      "is_interactive": true
+    },
+    "Manage.dc.html": {
+      "x": 2820,
+      "y": 3792,
+      "w": 390,
+      "h": 844,
+      "title": "manage · setting up",
+      "page": "proto",
+      "is_interactive": true
+    },
+    "ManageDrawn.dc.html": {
+      "x": 3760,
+      "y": 3792,
+      "w": 390,
+      "h": 844,
+      "title": "manage · after the draw",
+      "page": "proto",
+      "is_interactive": true
+    },
+    "ExchangeBoard.dc.html": {
+      "x": 4230,
+      "y": 3792,
+      "w": 390,
+      "h": 844,
+      "title": "exchange board",
+      "page": "proto",
+      "is_interactive": true
+    },
+    "HostReveal.dc.html": {
+      "x": 4700,
+      "y": 3792,
+      "w": 390,
+      "h": 844,
+      "title": "reveal",
+      "page": "proto",
+      "is_interactive": true
+    },
+    "HostMeetPet.dc.html": {
+      "w": 390,
+      "h": 844,
+      "page": "proto",
+      "is_interactive": true,
+      "x": 1410,
+      "y": 3792,
+      "title": "host · meet your pet (playing)"
+    },
+    "HostInstructions.dc.html": {
+      "w": 390,
+      "h": 844,
+      "page": "proto",
+      "is_interactive": true,
+      "x": 1880,
+      "y": 3792,
+      "title": "host · instructions (playing)"
+    },
+    "ManageNew.dc.html": {
+      "w": 390,
+      "h": 844,
+      "x": 2350,
+      "y": 3792,
+      "page": "proto",
+      "is_interactive": true,
+      "title": "manage · just created"
+    },
+    "Palette.dc.html": {
+      "x": 0,
+      "y": 0,
+      "w": 760,
+      "h": 980,
+      "title": "dark panel options · contrast (frosted glass chosen)",
+      "page": "kit"
+    },
+    "Icons.dc.html": {
+      "x": 840,
+      "y": 0,
+      "w": 760,
+      "h": 820,
+      "title": "ui icons",
+      "page": "kit"
+    },
+    "SceneSky.dc.html": {
+      "x": 1680,
+      "y": 0,
+      "w": 390,
+      "h": 844,
+      "title": "scene · sky (snow, sparkles)",
+      "page": "kit"
+    },
+    "SceneGround.dc.html": {
+      "x": 2150,
+      "y": 0,
+      "w": 390,
+      "h": 96,
+      "title": "scene · ground (snowbank, trees, gifts)",
+      "page": "kit"
+    },
+    "ManageReady.dc.html": {
+      "x": 3290,
+      "y": 3792,
+      "w": 390,
+      "h": 844,
+      "page": "proto",
+      "is_interactive": true,
+      "title": "manage · everyone joined, ready to draw"
+    },
+    "MySpaceAfterDraw.dc.html": {
+      "x": 940,
+      "y": 1264,
+      "w": 390,
+      "h": 844,
+      "page": "proto",
+      "is_interactive": true,
+      "title": "my space · first visit after the draw"
+    },
+    "MyGifteeBeforeDraw.dc.html": {
+      "x": 1410,
+      "y": 1264,
+      "w": 390,
+      "h": 844,
+      "page": "proto",
+      "is_interactive": true,
+      "title": "my giftee · before the draw"
+    },
+    "MyGifteeNoWishes.dc.html": {
+      "x": 1880,
+      "y": 1264,
+      "w": 390,
+      "h": 844,
+      "page": "proto",
+      "is_interactive": true,
+      "title": "my giftee · giftee has no wishes"
+    },
+    "MySpaceNudged.dc.html": {
+      "x": 2350,
+      "y": 1264,
+      "w": 390,
+      "h": 844,
+      "page": "proto",
+      "is_interactive": true,
+      "title": "my wishlist · nudged by santa"
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-11-01T09:00:00Z",
+    "v": 1
+  },
+  "designSystems": [
+    {
+      "artifact": "https://claude.ai/artifact/RFViWmcsVdzi1qf6dGc4yQ",
+      "copiedAt": "2026-11-01T14:00:00Z",
+      "namespace": "pawker",
+      "title": "pawker",
+      "version": "1793478677-27da"
+    }
+  ],
+  "launch": {
+    "view": "canvas",
+    "page": "proto"
+  },
+  "noteOrder": [
+    "vibes",
+    "hostflow",
+    "friendflow",
+    "panels",
+    "p_join",
+    "p_space",
+    "p_return",
+    "p_host",
+    "kit"
+  ],
+  "notes": {
+    "friendflow": {
+      "kind": "title1",
+      "maxW": 1330,
+      "text": "friend flow",
+      "w": 240,
+      "x": 0,
+      "y": 964,
+      "page": "explore"
+    },
+    "hostflow": {
+      "kind": "title1",
+      "maxW": 1330,
+      "text": "host flow",
+      "w": 240,
+      "x": 0,
+      "y": -300,
+      "page": "explore"
+    },
+    "panels": {
+      "kind": "title1",
+      "maxW": 860,
+      "text": "dark panel options",
+      "w": 240,
+      "x": 0,
+      "y": 3472,
+      "page": "explore"
+    },
+    "vibes": {
+      "kind": "title1",
+      "maxW": 2270,
+      "text": "wishlist vibes",
+      "w": 240,
+      "x": 0,
+      "y": 2228,
+      "page": "explore"
+    },
+    "p_join": {
+      "x": 0,
+      "y": -300,
+      "text": "joining for the first time",
+      "kind": "title1",
+      "maxW": 2270,
+      "page": "proto"
+    },
+    "p_space": {
+      "x": 0,
+      "y": 964,
+      "text": "my space: wishlist and giftee",
+      "kind": "title1",
+      "maxW": 3210,
+      "page": "proto"
+    },
+    "p_return": {
+      "x": 0,
+      "y": 2228,
+      "text": "returning and dead ends",
+      "kind": "title1",
+      "maxW": 860,
+      "page": "proto"
+    },
+    "p_host": {
+      "x": 0,
+      "y": 3492,
+      "text": "host flow",
+      "kind": "title1",
+      "maxW": 5090,
+      "page": "proto"
+    },
+    "kit": {
+      "x": 0,
+      "y": -300,
+      "text": "night kit",
+      "kind": "title1",
+      "maxW": 2540,
+      "page": "kit"
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Details.dc.html",
+    "Members.dc.html",
+    "Join.dc.html",
+    "Wishlist.dc.html",
+    "WishlistCream.dc.html",
+    "WishlistFrost.dc.html",
+    "WishlistEvergreen.dc.html",
+    "WishlistEvergreenNight.dc.html",
+    "WishlistEvergreenDark.dc.html",
+    "PanelPine.dc.html",
+    "PanelGlass.dc.html",
+    "PickName.dc.html",
+    "EnterPin.dc.html",
+    "ChoosePet.dc.html",
+    "MeetPet.dc.html",
+    "Instructions.dc.html",
+    "MySpace.dc.html",
+    "MyGiftee.dc.html",
+    "InstructionsAgain.dc.html",
+    "ProvePet.dc.html",
+    "NotFound.dc.html",
+    "AppHome.dc.html",
+    "CreateGroup.dc.html",
+    "HostChoosePet.dc.html",
+    "Manage.dc.html",
+    "ManageDrawn.dc.html",
+    "ExchangeBoard.dc.html",
+    "HostReveal.dc.html",
+    "HostMeetPet.dc.html",
+    "HostInstructions.dc.html",
+    "ManageNew.dc.html",
+    "Palette.dc.html",
+    "Icons.dc.html",
+    "SceneSky.dc.html",
+    "SceneGround.dc.html",
+    "ManageReady.dc.html",
+    "MySpaceAfterDraw.dc.html",
+    "MyGifteeBeforeDraw.dc.html",
+    "MyGifteeNoWishes.dc.html",
+    "MySpaceNudged.dc.html"
+  ],
+  "pages": [
+    {
+      "id": "explore",
+      "name": "explorations"
+    },
+    {
+      "id": "proto",
+      "name": "prototype · pass 2"
+    },
+    {
+      "id": "kit",
+      "name": "night kit"
+    }
+  ],
+  "title": "secret santa mockup"
+}

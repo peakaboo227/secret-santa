@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>secret santa</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/pawker/tokens.css">
+<link rel="stylesheet" href="ds/pawker/components/bundle.css">
+<script src="ds/pawker/components/bundle.js"></script>
+<link rel="stylesheet" href="night.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@700&amp;family=Merriweather+Sans:wght@700&amp;family=Inter:wght@400;700&amp;family=Barlow:wght@400&amp;display=swap">
+<style>
+body{margin:0;background:#1C4F31}
+a{color:#F5CF6E}a:hover{color:#FFF6DF}
+.ss-row:hover{border-color:var(--border)}
+.ss-tile:hover{border-color:var(--border)}
+</style>
+</helmet>
+<div data-theme="christmas" data-panel="{{panel}}" style="isolation: isolate; --font-display: 'Be Vietnam Pro', 'Merriweather Sans', sans-serif; width: 100%; min-height: 844px; position: relative; box-sizing: border-box; background: var(--page); font-family: var(--font-sans); color: var(--ink); display: flex; flex-direction: column; align-items: center">
+<div aria-hidden="true" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: -1; overflow: hidden; pointer-events: none"><dc-import name="SceneSky" hint-size="100%,100%"></dc-import></div>
+<div style="box-sizing: border-box; width: 100%; max-width: 440px; padding: 22px 22px 16px; display: flex; flex-direction: column; gap: 22px; flex-grow: 1">
+<div style="display: flex"><div style="display: flex; align-items: center; gap: 11px"><span style="box-sizing: border-box; width: 24px; height: 32px; display: flex; align-items: center; justify-content: center; background: var(--panel-inner); border: 2px solid var(--action); border-radius: 6px; box-shadow: var(--shadow-mark)"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" shape-rendering="crispEdges"><rect x="1" y="5" width="10" height="6" fill="var(--action)"></rect><rect x="0" y="3" width="12" height="2" fill="var(--action)"></rect><rect x="5" y="3" width="2" height="8" fill="#D6455A"></rect><rect x="3" y="1" width="2" height="2" fill="#D6455A"></rect><rect x="7" y="1" width="2" height="2" fill="#D6455A"></rect></svg></span><span class="wordmark" style="color: var(--ink)">secret santa</span></div></div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 24px 0 8px">
+<div style="display: flex; gap: 14px; align-items: flex-end">
+<x-import component-from-global-scope="Pawker.Pet" slug="kitten-ginger" state="bob" size="{{s52}}" label="a member"></x-import>
+<x-import component-from-global-scope="Pawker.Pet" slug="rabbit-white" state="sniff" size="{{s62}}" label="a member" delay="{{d1}}"></x-import>
+<x-import component-from-global-scope="Pawker.Pet" slug="dog-shiba" state="bob" size="{{s52}}" label="a member" delay="{{d2}}"></x-import>
+</div>
+</div>
+<a href="CreateGroup.dc.html" class="pk-btn pk-btn-primary" style="box-sizing: border-box; width: 100%; text-decoration: none">create a group</a>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<h2 class="section" style="margin: 0">groups i manage</h2>
+<sc-if value="{{hasGroups}}" hint-placeholder-val="{{true}}">
+<a href="Manage.dc.html" class="ss-row" style="box-sizing: border-box; width: 100%; min-height: 56px; display: flex; align-items: center; gap: 10px; padding: 12px 16px; background: var(--panel); border: 2px solid var(--border-soft); border-radius: var(--radius-panel); box-shadow: var(--shadow-panel); text-decoration: none; color: var(--ink)">
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px">
+<span class="field">christmas 2026</span>
+<span class="note-lg" style="color: var(--ink-2)">10 names · 7 joined · not drawn yet</span>
+</div>
+<span style="display: flex; color: var(--ink-2)"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" shape-rendering="crispEdges" fill="currentColor"><path d="M3 2h2v1h-2zM4 3h2v1h-2zM5 4h2v1h-2zM6 5h2v1h-2zM6 6h2v1h-2zM5 7h2v1h-2zM4 8h2v1h-2zM3 9h2v1h-2z"></path></svg></span>
+</a>
+</sc-if>
+<sc-if value="{{noGroups}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 16px; border: 2px solid var(--border-soft); border-radius: var(--radius-panel)">
+<span class="field">no groups on this device</span>
+<span class="body-sm" style="color: var(--ink-2)">made a group on another phone? open its game link and sign in with your name, pin and pet. manage shows up for the host.</span>
+</div>
+</sc-if>
+</div>
+</div>
+<div aria-hidden="true" style="width: 100%; flex: none; margin-top: auto"><dc-import name="SceneGround" hint-size="100%,96px"></dc-import></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"panel":{"editor":"enum","options":["auto","pine","frosted glass"],"default":"auto","section":"theme"},"groups":{"editor":"enum","options":["one group","none on this device"],"default":"one group"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+const has = (this.props.groups ?? "one group") === "one group";
+const panelPick = this.props.panel ?? "auto";
+const panel = panelPick === "pine" ? "pine" : panelPick === "frosted glass" ? "glass" : "glass";
+return { panel,  hasGroups: has, noGroups: !has, s52: 52, s62: 62, d1: 0.4, d2: 0.8 };
+}
+}
+</script>
+</body>
+</html>

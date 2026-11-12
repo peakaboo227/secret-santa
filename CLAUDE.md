@@ -18,6 +18,11 @@ explain what you did in plain words, and stop to ask when a product decision is 
   - the host never sees pets or pairings until the gift exchange starts (`groups.exchange_started_at`);
   - a giver sees only their giftee's pet, pet name and wishlist, never their real name;
   - the owner link (`OWNER_LINK_SECRET`) gives manage access to every group, never player access.
+- **Match the prototype exactly.** `prototype/` holds the product owner's approved design for every screen
+  (`prototype/README.md` lists them and says how to read them). Build each screen to match it: same text,
+  layout, spacing, colours, icons and states. Don't redesign, reword or "improve" it. If something can't be
+  built as designed, or a screen isn't in the prototype, stop and ask. Never edit `prototype/` except to
+  re-copy it from the design canvas.
 - **Design system first.** It lives in `design-system/` (the boo design system, `christmas-night` theme,
   dark only). Read `design-system/README.md` first, and each component's README before using it.
   Use the typed components in `src/components/boo`. Colours, spacing, radius and type only through

@@ -1,0 +1,100 @@
+/* christmas night: the v1 dark theme for secret santa.
+   shared by every prototype screen. frosted glass (data-panel="glass") is the chosen panel (4 nov).
+   deep pine (data-panel="pine") stays only for the comparison board and the panel tweak. */
+
+[data-theme="christmas"][data-panel] {
+  --page: #1C4F31;
+  --ink: #FFF6DF;
+  --ink-2: #E9DFC6;
+  --ink-muted: #DCE6D8;
+  --ink-faint: #D6E3DA;
+  --action: #F5CF6E;
+  --action-dark: #C8912A;
+  --on-action: #3A2C1C;
+  --action-tint: #2E5A3F;
+  --action-ink: #FFF6DF;
+  --highlight: #F5CF6E;
+  --accent: #D6455A;
+  --shadow-cta: 0 5px 0 #C8912A;
+  --shadow-cta-pressed: 0 2px 0 #C8912A;
+  --shadow-mark: 0 2px 0 #C8912A;
+  --danger-ink: #FFDDD6;
+  --danger-tint: #2E5A3F;
+  --warm13-bg: #4A3A2A;
+  --warm13-border: #E3A08C;
+  --warm13-ink: #FFDDD6;
+  --shadow-field-invalid: 0 0 0 4px rgba(227,160,140,0.25);
+  --scrim: rgba(8,24,14,0.62);
+  --shadow-overlay: 0 18px 40px rgba(0,0,0,0.45);
+  /* scene */
+  --snow: #FFFFFF;
+  --snow-shade: #DCEBE2;
+  --sparkle: #F5CF6E;
+  --sparkle-2: #E8B93F;
+  --tree: #2F7D4F;
+  --tree-dark: #24633E;
+  --trunk: #8A5A2B;
+  --berry: #D6455A;
+}
+
+/* b · deep pine: solid panels darker than the page */
+[data-theme="christmas"][data-panel="pine"] {
+  --panel: #133A23;
+  --panel-inner: #1A472C;
+  --sheet: #133A23;
+  --white: #0F311D;
+  --border: #7E9C88;
+  --border-soft: #3A6B4D;
+  --border-neutral: #7F9F8B;
+  --border-neutral-hover: #9AB8A5;
+  --action-border: #7E9C88;
+  --ink-disabled: #9FBFA9;
+  --danger-border: #B97F76;
+  --flat-shadow: #0B2415;
+  --shadow-panel: 0 4px 0 #0B2415;
+  --shadow-step: 0 5px 0 #0B2415;
+  --shadow-cta-waiting: 0 5px 0 #0B2415;
+}
+
+/* d · frosted glass: see-through panels, darker insets, solid sheets */
+[data-theme="christmas"][data-panel="glass"] {
+  --panel: rgba(255,255,255,0.12);
+  --panel-inner: rgba(8,36,22,0.28);
+  --sheet: #2E5A41;
+  --white: rgba(8,36,22,0.40);
+  --border: rgba(255,255,255,0.55);
+  --border-soft: rgba(255,255,255,0.24);
+  --border-neutral: rgba(255,255,255,0.50);
+  --border-neutral-hover: rgba(255,255,255,0.70);
+  --action-border: rgba(255,255,255,0.55);
+  --ink-disabled: #B9D0C1;
+  --danger-border: rgba(255,190,178,0.65);
+  --flat-shadow: rgba(8,36,22,0.35);
+  --shadow-panel: 0 4px 0 rgba(8,36,22,0.35);
+  --shadow-step: 0 5px 0 rgba(8,36,22,0.35);
+  --shadow-cta-waiting: 0 5px 0 rgba(8,36,22,0.35);
+}
+[data-panel="glass"] [style*="background: var(--panel"] {
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+/* contrast and touch fixes for the dark theme */
+[data-theme="christmas"][data-panel] .pk-btn:focus-visible,
+[data-theme="christmas"][data-panel] .pk-chip-button:focus-visible,
+[data-theme="christmas"][data-panel] a:focus-visible,
+[data-theme="christmas"][data-panel] button:focus-visible,
+[data-theme="christmas"][data-panel] input:focus-visible,
+[data-theme="christmas"][data-panel] textarea:focus-visible {
+  outline: 2px solid var(--action);
+  outline-offset: 3px;
+}
+[data-theme="christmas"][data-panel] .pk-btn-utility { min-height: 44px; }
+[data-theme="christmas"][data-panel] .pk-chip-highlight { color: var(--on-action); }
+
+/* scene motion */
+@keyframes ss-twinkle { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(.6); opacity: .35; } }
+@keyframes ss-fall { 0% { transform: translateY(-40px); } 100% { transform: translateY(900px); } }
+.ss-twinkle { animation: ss-twinkle 2.4s ease-in-out infinite; }
+.ss-fall { animation: ss-fall 14s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .ss-twinkle, .ss-fall { animation: none; } }

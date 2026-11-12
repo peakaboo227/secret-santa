@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>manage</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/pawker/tokens.css">
+<link rel="stylesheet" href="ds/pawker/components/bundle.css">
+<script src="ds/pawker/components/bundle.js"></script>
+<link rel="stylesheet" href="night.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@700&amp;family=Merriweather+Sans:wght@700&amp;family=Inter:wght@400;700&amp;family=Barlow:wght@400&amp;display=swap">
+<style>
+body{margin:0;background:#1C4F31}
+a{color:#F5CF6E}a:hover{color:#FFF6DF}
+.ss-row:hover{border-color:var(--border)}
+.ss-tile:hover{border-color:var(--border)}
+</style>
+</helmet>
+<div data-theme="christmas" data-panel="{{panel}}" style="isolation: isolate; --font-display: 'Be Vietnam Pro', 'Merriweather Sans', sans-serif; width: 100%; height: 844px; overflow: hidden; position: relative; box-sizing: border-box; background: var(--page); font-family: var(--font-sans); color: var(--ink); display: flex; flex-direction: column; align-items: center">
+<div aria-hidden="true" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: -1; overflow: hidden; pointer-events: none"><dc-import name="SceneSky" hint-size="100%,100%"></dc-import></div>
+<div style="box-sizing: border-box; width: 100%; max-width: 440px; padding: 18px 22px 8px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; align-items: center; gap: 11px"><span style="box-sizing: border-box; width: 24px; height: 32px; display: flex; align-items: center; justify-content: center; background: var(--panel-inner); border: 2px solid var(--action); border-radius: 6px; box-shadow: var(--shadow-mark)"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" shape-rendering="crispEdges"><rect x="1" y="5" width="10" height="6" fill="var(--action)"></rect><rect x="0" y="3" width="12" height="2" fill="var(--action)"></rect><rect x="5" y="3" width="2" height="8" fill="#D6455A"></rect><rect x="3" y="1" width="2" height="2" fill="#D6455A"></rect><rect x="7" y="1" width="2" height="2" fill="#D6455A"></rect></svg></span><span class="wordmark" style="color: var(--ink)">secret santa</span></div>
+<div style="display: flex; align-items: flex-end; gap: 8px">
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px">
+<a href="AppHome.dc.html" class="label" style="display: inline-flex; align-items: center; gap: 4px; min-height: 36px; width: fit-content; text-decoration: none; color: var(--ink-2)"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" shape-rendering="crispEdges" fill="currentColor"><path d="M6 2h2v1h-2zM5 3h2v1h-2zM4 4h2v1h-2zM3 5h2v1h-2zM3 6h2v1h-2zM4 7h2v1h-2zM5 8h2v1h-2zM6 9h2v1h-2z"></path></svg><span>my groups</span></a>
+<span class="eyebrow" style="color: var(--ink-2)">manage</span>
+<h1 class="headline" style="margin: 0; font-size: 24px">christmas 2026</h1>
+<span class="note-lg" style="color: var(--ink-2)">budget 300k · gift day 24 dec</span>
+</div>
+<sc-if value="{{playing}}" hint-placeholder-val="{{true}}">
+<a href="MySpace.dc.html" class="pk-btn pk-btn-utility pk-tone-neutral" style="text-decoration: none; min-height: 40px">my space</a>
+</sc-if>
+</div>
+</div>
+<main style="box-sizing: border-box; width: 100%; flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; align-items: center">
+<div style="box-sizing: border-box; width: 100%; max-width: 440px; flex: 1 0 auto; padding: 8px 22px 32px; display: flex; flex-direction: column; gap: 16px">
+<section style="display: flex; flex-direction: column; gap: 12px; padding: 16px; background: var(--panel); border: 2px solid var(--border-soft); border-radius: var(--radius-step); box-shadow: var(--shadow-step)">
+<div style="display: flex; align-items: center; gap: 10px">
+<span aria-hidden="true" class="label" style="flex: none; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-pill); {{d1Style}}">{{d1Mark}}</span>
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px">
+<h2 class="section" style="margin: 0">names</h2>
+<span class="note-lg" style="color: var(--ink-2)">{{namesSub}}</span>
+</div>
+</div>
+<div style="display: flex; justify-content: flex-end">
+<button type="button" class="pk-btn pk-btn-utility pk-tone-neutral" onClick="{{togglePins}}" aria-pressed="{{pinsPressed}}"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" shape-rendering="crispEdges" fill="currentColor"><path d="M1 3h4v1h-4zM0 4h1v1h-1zM5 4h1v1h-1zM0 5h1v1h-1zM2 5h2v1h-2zM5 5h7v1h-7zM0 6h1v1h-1zM2 6h2v1h-2zM5 6h2v1h-2zM8 6h1v1h-1zM10 6h1v1h-1zM0 7h1v1h-1zM5 7h1v1h-1zM8 7h1v1h-1zM10 7h1v1h-1zM1 8h4v1h-4z"></path></svg>{{pinsLabel}}</button>
+</div>
+<ul aria-label="names" style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="10">
+<li style="display: flex">
+<button type="button" onClick="{{r.open}}" disabled="{{locked3}}" aria-label="{{r.aria}}" class="ss-row" style="box-sizing: border-box; width: 100%; min-height: 52px; display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: var(--panel-inner); border: 2px solid var(--border-soft); border-radius: var(--radius-panel); color: var(--ink); text-align: left; cursor: pointer">
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 4px; min-width: 0">
+<span class="field">{{r.name}}<sc-if value="{{r.host}}" hint-placeholder-val="{{false}}"><span class="note-lg" style="color: var(--ink-2)"> · you</span></sc-if></span>
+<div style="display: flex; gap: 6px; flex-wrap: wrap">
+<x-import component-from-global-scope="Pawker.Chip" tone="{{r.joinTone}}">{{r.joinLabel}}</x-import>
+<sc-if value="{{r.showWish}}" hint-placeholder-val="{{true}}">
+<x-import component-from-global-scope="Pawker.Chip" tone="{{r.wishTone}}">{{r.wishLabel}}</x-import>
+</sc-if>
+</div>
+</div>
+<sc-if value="{{showPins}}" hint-placeholder-val="{{false}}">
+<span class="code" style="flex: none">{{r.pin}}</span>
+</sc-if>
+<sc-if value="{{notLocked3}}" hint-placeholder-val="{{true}}">
+<span style="display: flex; color: var(--ink-2)"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" shape-rendering="crispEdges" fill="currentColor"><path d="M3 2h2v1h-2zM4 3h2v1h-2zM5 4h2v1h-2zM6 5h2v1h-2zM6 6h2v1h-2zM5 7h2v1h-2zM4 8h2v1h-2zM3 9h2v1h-2z"></path></svg></span>
+</sc-if>
+</button>
+</li>
+</sc-for>
+</ul>
+<sc-if value="{{beforeDraw}}" hint-placeholder-val="{{true}}">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="add-name" class="label" style="color: var(--ink-2)">add names</label>
+<div style="display: flex; gap: 8px">
+<div style="flex-grow: 1"><x-import component-from-global-scope="Pawker.Field" id="add-name" value="{{addDraft}}" on-change="{{onAdd}}" invalid="{{addErr}}" placeholder="lan, minh, an"></x-import></div>
+<button type="button" class="pk-btn pk-btn-utility pk-tone-neutral" onClick="{{addName}}" style="min-height: 46px"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" shape-rendering="crispEdges" fill="currentColor"><path d="M5 1h2v1h-2zM5 2h2v1h-2zM5 3h2v1h-2zM5 4h2v1h-2zM1 5h10v1h-10zM1 6h10v1h-10zM5 7h2v1h-2zM5 8h2v1h-2zM5 9h2v1h-2zM5 10h2v1h-2z"></path></svg>add</button>
+</div>
+<sc-if value="{{addErr}}" hint-placeholder-val="{{false}}"><span role="alert" class="label" style="color: var(--warm13-ink)">{{addErrMsg}}</span></sc-if>
+<span class="note-lg" style="color: var(--ink-2)">add one name or several, separated by commas. use the names your friends will recognise. the app makes a pin for each name: send each person their pin privately.</span>
+</div>
+</sc-if>
+<sc-if value="{{drawn}}" hint-placeholder-val="{{false}}">
+<span class="note-lg" style="color: var(--ink-2)">names are locked. you can still rename someone, or remove them, which draws names again for everyone.</span>
+</sc-if>
+<sc-if value="{{exchange}}" hint-placeholder-val="{{false}}">
+<span class="note-lg" style="color: var(--ink-2)">the gift exchange has started, so names can’t change any more.</span>
+</sc-if>
+
+</section>
+<section style="display: flex; flex-direction: column; gap: 12px; padding: 16px; background: var(--panel); border: 2px solid var(--border-soft); border-radius: var(--radius-step); box-shadow: var(--shadow-step)">
+<div style="display: flex; align-items: center; gap: 10px">
+<span aria-hidden="true" class="label" style="flex: none; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-pill); {{d2Style}}">{{d2Mark}}</span>
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px">
+<h2 class="section" style="margin: 0">rules</h2>
+<span class="note-lg" style="color: var(--ink-2)">who can’t give to whom (optional)</span>
+</div>
+</div>
+<sc-if value="{{hasRules}}" hint-placeholder-val="{{true}}">
+<ul aria-label="rules" style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{ruleRows}}" as="x" hint-placeholder-count="2">
+<li style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: var(--panel-inner); border: 2px solid var(--border-soft); border-radius: var(--radius-panel)">
+<span class="label" style="flex-grow: 1">{{x.text}}</span>
+<sc-if value="{{beforeDraw}}" hint-placeholder-val="{{true}}">
+<button type="button" class="pk-btn pk-btn-utility pk-tone-leave" onClick="{{x.remove}}" aria-label="{{x.removeLabel}}">remove</button>
+</sc-if>
+</li>
+</sc-for>
+</ul>
+</sc-if>
+<sc-if value="{{noRules}}" hint-placeholder-val="{{false}}">
+<span class="body-sm" style="color: var(--ink-2)">no rules. anyone can draw anyone.</span>
+</sc-if>
+<sc-if value="{{beforeDraw}}" hint-placeholder-val="{{true}}">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="r-from" class="label" style="color: var(--ink-2)">who</label>
+<select id="r-from" value="{{ruleFrom}}" onChange="{{onFrom}}" style="box-sizing: border-box; width: 100%; min-height: 46px; padding: 10px 12px; background: var(--white); border: 2px solid var(--border); border-radius: var(--radius-field); color: var(--ink); font-family: var(--font-sans); font-weight: 700; font-size: 15px">
+<option value="">pick a name</option>
+<sc-for list="{{opts}}" as="o" hint-placeholder-count="10"><option value="{{o.id}}">{{o.name}}</option></sc-for>
+</select>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="r-to" class="label" style="color: var(--ink-2)">can’t give to</label>
+<select id="r-to" value="{{ruleTo}}" onChange="{{onTo}}" style="box-sizing: border-box; width: 100%; min-height: 46px; padding: 10px 12px; background: var(--white); border: 2px solid var(--border); border-radius: var(--radius-field); color: var(--ink); font-family: var(--font-sans); font-weight: 700; font-size: 15px">
+<option value="">pick a name</option>
+<sc-for list="{{opts}}" as="o" hint-placeholder-count="10"><option value="{{o.id}}">{{o.name}}</option></sc-for>
+</select>
+</div>
+</div>
+<sc-if value="{{ruleErr}}" hint-placeholder-val="{{false}}"><span role="alert" class="label" style="color: var(--warm13-ink)">{{ruleErrMsg}}</span></sc-if>
+<button type="button" class="pk-btn pk-btn-utility pk-tone-neutral" onClick="{{addRule}}" style="min-height: 44px"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" shape-rendering="crispEdges" fill="currentColor"><path d="M5 1h2v1h-2zM5 2h2v1h-2zM5 3h2v1h-2zM5 4h2v1h-2zM1 5h10v1h-10zM1 6h10v1h-10zM5 7h2v1h-2zM5 8h2v1h-2zM5 9h2v1h-2zM5 10h2v1h-2z"></path></svg>add rule</button>
+<span class="note-lg" style="color: var(--ink-2)">rules go one way. for a couple, add one rule each way. nobody but you sees rules.</span>
+</sc-if>
+<sc-if value="{{afterDraw}}" hint-placeholder-val="{{false}}">
+<span class="note-lg" style="color: var(--ink-2)">rules are locked after the draw.</span>
+</sc-if>
+
+</section>
+<section style="display: flex; flex-direction: column; gap: 12px; padding: 16px; background: var(--panel); border: 2px solid var(--border-soft); border-radius: var(--radius-step); box-shadow: var(--shadow-step)">
+<div style="display: flex; align-items: center; gap: 10px">
+<span aria-hidden="true" class="label" style="flex: none; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-pill); {{d3Style}}">{{d3Mark}}</span>
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px">
+<h2 class="section" style="margin: 0">game link</h2>
+<span class="note-lg" style="color: var(--ink-2)">copy it any time</span>
+</div>
+</div>
+<div style="display: flex; gap: 8px; align-items: center">
+<span class="code" style="flex-grow: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 12px; background: var(--white); border: 2px solid var(--border); border-radius: var(--radius-field); letter-spacing: 0.04em">[app address]/g/x7k2m9</span>
+<button type="button" class="pk-btn pk-btn-utility pk-tone-neutral" onClick="{{copy}}" style="min-height: 46px"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" shape-rendering="crispEdges" fill="currentColor"><path d="M4 1h7v1h-7zM4 2h1v1h-1zM10 2h1v1h-1zM1 3h7v1h-7zM10 3h1v1h-1zM1 4h1v1h-1zM7 4h1v1h-1zM10 4h1v1h-1zM1 5h1v1h-1zM7 5h1v1h-1zM10 5h1v1h-1zM1 6h1v1h-1zM7 6h4v1h-4zM1 7h1v1h-1zM7 7h1v1h-1zM1 8h1v1h-1zM7 8h1v1h-1zM1 9h7v1h-7z"></path></svg>{{copyLabel}}</button>
+</div>
+<span class="note-lg" style="color: var(--ink-2)">share it in your group chat. nobody gets in without their name and pin.</span>
+
+</section>
+<section style="display: flex; flex-direction: column; gap: 12px; padding: 16px; background: var(--panel); border: 2px solid var(--border-soft); border-radius: var(--radius-step); box-shadow: var(--shadow-step)">
+<div style="display: flex; align-items: center; gap: 10px">
+<span aria-hidden="true" class="label" style="flex: none; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-pill); {{d4Style}}">{{d4Mark}}</span>
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px">
+<h2 class="section" style="margin: 0">draw names</h2>
+<span class="note-lg" style="color: var(--ink-2)">{{drawSub}}</span>
+</div>
+</div>
+<sc-if value="{{waiting}}" hint-placeholder-val="{{true}}">
+<button type="button" class="pk-btn pk-btn-primary" disabled style="width: 100%">draw names</button>
+<span class="body-sm" style="color: var(--ink-2)">{{waitingText}}</span>
+</sc-if>
+<sc-if value="{{ready}}" hint-placeholder-val="{{false}}">
+<button type="button" class="pk-btn pk-btn-primary" onClick="{{openDraw}}" style="width: 100%">draw names</button>
+<span class="body-sm" style="color: var(--ink-2)">everyone has joined. you won’t see who drew who.</span>
+</sc-if>
+<sc-if value="{{drawErr}}" hint-placeholder-val="{{false}}"><span role="alert" class="label" style="color: var(--warm13-ink)">no draw fits all the rules. nothing changed. remove or change a rule, then try again.</span></sc-if>
+<sc-if value="{{afterDraw}}" hint-placeholder-val="{{false}}">
+<span class="body-sm">names are drawn. everyone can see their giftee now.</span>
+</sc-if>
+
+</section>
+<section style="display: flex; flex-direction: column; gap: 12px; padding: 16px; background: var(--panel); border: 2px solid var(--border-soft); border-radius: var(--radius-step); box-shadow: var(--shadow-step)">
+<div style="display: flex; align-items: center; gap: 10px">
+<span aria-hidden="true" class="label" style="flex: none; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-pill); {{d5Style}}">{{d5Mark}}</span>
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px">
+<h2 class="section" style="margin: 0">gift exchange</h2>
+<span class="note-lg" style="color: var(--ink-2)">at the party</span>
+</div>
+</div>
+<sc-if value="{{drawn}}" hint-placeholder-val="{{false}}">
+<button type="button" class="pk-btn pk-btn-primary" onClick="{{openExchange}}" style="width: 100%">start gift exchange</button>
+<span class="body-sm" style="color: var(--ink-2)">start it at the party. you’ll see every pet and pair from then on.</span>
+</sc-if>
+<sc-if value="{{exchange}}" hint-placeholder-val="{{false}}">
+<a href="ExchangeBoard.dc.html" class="pk-btn pk-btn-primary" style="box-sizing: border-box; width: 100%; text-decoration: none">open the exchange board</a>
+</sc-if>
+<sc-if value="{{beforeDraw}}" hint-placeholder-val="{{true}}">
+<span class="body-sm" style="color: var(--ink-2)">opens after the draw.</span>
+</sc-if>
+
+</section>
+</div>
+<div aria-hidden="true" style="width: 100%; flex: none; margin-top: auto"><dc-import name="SceneGround" hint-size="100%,96px"></dc-import></div>
+</main>
+<sc-if value="{{sActions}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 5; background: var(--scrim); display: flex; flex-direction: column; justify-content: flex-end; align-items: center">
+<div role="dialog" aria-modal="true" aria-label="options for {{tName}}" style="box-sizing: border-box; width: 100%; max-width: 440px; padding: 22px; background: var(--sheet); border: 3px solid var(--border); border-bottom: 0; border-radius: var(--radius-overlay) var(--radius-overlay) 0 0; box-shadow: var(--shadow-overlay); display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 8px"><h2 class="section" style="margin: 0; flex-grow: 1">{{tName}}</h2><button type="button" aria-label="close" onClick="{{close}}" style="flex: none; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: transparent; border: 0; color: var(--ink-2); cursor: pointer; padding: 0"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 12 12" shape-rendering="crispEdges" fill="currentColor"><path d="M1 1h2v1h-2zM9 1h2v1h-2zM2 2h2v1h-2zM8 2h2v1h-2zM3 3h2v1h-2zM7 3h2v1h-2zM4 4h4v1h-4zM5 5h2v1h-2zM4 6h4v1h-4zM3 7h2v1h-2zM7 7h2v1h-2zM2 8h2v1h-2zM8 8h2v1h-2zM1 9h2v1h-2zM9 9h2v1h-2z"></path></svg></button></div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<sc-if value="{{canRename}}" hint-placeholder-val="{{true}}"><button type="button" class="pk-btn pk-btn-utility pk-tone-neutral" onClick="{{openRename}}" style="box-sizing: border-box; width: 100%; min-height: 48px">rename</button></sc-if>
+<sc-if value="{{canTogglePlay}}" hint-placeholder-val="{{false}}"><button type="button" class="pk-btn pk-btn-utility pk-tone-neutral" onClick="{{togglePlaying}}" style="box-sizing: border-box; width: 100%; min-height: 48px">{{playLabel}}</button></sc-if>
+<sc-if value="{{canReset}}" hint-placeholder-val="{{false}}"><button type="button" class="pk-btn pk-btn-utility pk-tone-neutral" onClick="{{openReset}}" style="box-sizing: border-box; width: 100%; min-height: 48px">reset this name</button></sc-if>
+<sc-if value="{{canRemove}}" hint-placeholder-val="{{true}}"><button type="button" class="pk-btn pk-btn-utility pk-tone-leave" onClick="{{openRemove}}" style="box-sizing: border-box; width: 100%; min-height: 48px">remove from the group</button></sc-if>
+<sc-if value="{{isHostTarget}}" hint-placeholder-val="{{false}}"><span class="note-lg" style="color: var(--ink-2)">your own name stays on the list, so you can always sign in.</span></sc-if>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{sRename}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 5; background: var(--scrim); display: flex; flex-direction: column; justify-content: flex-end; align-items: center">
+<div role="dialog" aria-modal="true" aria-label="rename" style="box-sizing: border-box; width: 100%; max-width: 440px; padding: 22px; background: var(--sheet); border: 3px solid var(--border); border-bottom: 0; border-radius: var(--radius-overlay) var(--radius-overlay) 0 0; box-shadow: var(--shadow-overlay); display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 8px"><h2 class="section" style="margin: 0; flex-grow: 1">rename {{tName}}</h2><button type="button" aria-label="close" onClick="{{close}}" style="flex: none; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: transparent; border: 0; color: var(--ink-2); cursor: pointer; padding: 0"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 12 12" shape-rendering="crispEdges" fill="currentColor"><path d="M1 1h2v1h-2zM9 1h2v1h-2zM2 2h2v1h-2zM8 2h2v1h-2zM3 3h2v1h-2zM7 3h2v1h-2zM4 4h4v1h-4zM5 5h2v1h-2zM4 6h4v1h-4zM3 7h2v1h-2zM7 7h2v1h-2zM2 8h2v1h-2zM8 8h2v1h-2zM1 9h2v1h-2zM9 9h2v1h-2z"></path></svg></button></div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="rn" class="label" style="color: var(--ink-2)">new name</label>
+<x-import component-from-global-scope="Pawker.Field" id="rn" value="{{renameDraft}}" on-change="{{onRename}}" invalid="{{renameErr}}"></x-import>
+<sc-if value="{{renameErr}}" hint-placeholder-val="{{false}}"><span role="alert" class="label" style="color: var(--warm13-ink)">that name is already on the list</span></sc-if>
+<span class="note-lg" style="color: var(--ink-2)">whoever joined with this name keeps their pet, pin and wishlist.</span>
+</div>
+<button type="button" class="pk-btn pk-btn-primary" onClick="{{saveRename}}" style="width: 100%">save name</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{sRemove}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 5; background: var(--scrim); display: flex; flex-direction: column; justify-content: flex-end; align-items: center">
+<div role="dialog" aria-modal="true" aria-label="remove a name" style="box-sizing: border-box; width: 100%; max-width: 440px; padding: 22px; background: var(--sheet); border: 3px solid var(--border); border-bottom: 0; border-radius: var(--radius-overlay) var(--radius-overlay) 0 0; box-shadow: var(--shadow-overlay); display: flex; flex-direction: column; gap: 14px">
+<h2 class="section" style="margin: 0">remove {{tName}}?</h2>
+<span class="body-sm" style="color: var(--ink-2)">{{removeBody}}</span>
+<div style="display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap">
+<button type="button" class="pk-btn pk-btn-utility pk-tone-neutral" onClick="{{close}}" style="min-height: 44px">keep</button>
+<button type="button" class="pk-btn pk-btn-utility pk-tone-leave" onClick="{{doRemove}}" style="min-height: 44px">remove</button>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{sRedraw}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 5; background: var(--scrim); display: flex; flex-direction: column; justify-content: flex-end; align-items: center">
+<div role="dialog" aria-modal="true" aria-label="remove and draw again" style="box-sizing: border-box; width: 100%; max-width: 440px; padding: 22px; background: var(--sheet); border: 3px solid var(--border); border-bottom: 0; border-radius: var(--radius-overlay) var(--radius-overlay) 0 0; box-shadow: var(--shadow-overlay); display: flex; flex-direction: column; gap: 14px">
+<h2 class="section" style="margin: 0">remove {{tName}} and draw again?</h2>
+<span class="body-sm" style="color: var(--ink-2)">everyone gets a new giftee. wishlists stay. anyone who already bought a gift may need a new one.</span>
+<div style="display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap">
+<button type="button" class="pk-btn pk-btn-utility pk-tone-neutral" onClick="{{close}}" style="min-height: 44px">keep</button>
+<button type="button" class="pk-btn pk-btn-utility pk-tone-leave" onClick="{{doRemove}}" style="min-height: 44px">remove and draw again</button>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{sBlocked}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 5; background: var(--scrim); display: flex; flex-direction: column; justify-content: flex-end; align-items: center">
+<div role="dialog" aria-modal="true" aria-label="can’t remove" style="box-sizing: border-box; width: 100%; max-width: 440px; padding: 22px; background: var(--sheet); border: 3px solid var(--border); border-bottom: 0; border-radius: var(--radius-overlay) var(--radius-overlay) 0 0; box-shadow: var(--shadow-overlay); display: flex; flex-direction: column; gap: 14px">
+<h2 class="section" style="margin: 0">can’t remove {{tName}}</h2>
+<span class="body-sm" style="color: var(--ink-2)">{{blockedBody}}</span>
+<button type="button" class="pk-btn pk-btn-utility pk-tone-neutral" onClick="{{close}}" style="min-height: 44px; align-self: flex-end">ok</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{sReset}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 5; background: var(--scrim); display: flex; flex-direction: column; justify-content: flex-end; align-items: center">
+<div role="dialog" aria-modal="true" aria-label="reset a name" style="box-sizing: border-box; width: 100%; max-width: 440px; padding: 22px; background: var(--sheet); border: 3px solid var(--border); border-bottom: 0; border-radius: var(--radius-overlay) var(--radius-overlay) 0 0; box-shadow: var(--shadow-overlay); display: flex; flex-direction: column; gap: 14px">
+<h2 class="section" style="margin: 0">reset {{tName}}?</h2>
+<span class="body-sm" style="color: var(--ink-2)">their pet and wishlist are cleared and their devices are signed out. they join again with the same pin.</span>
+<div style="display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap">
+<button type="button" class="pk-btn pk-btn-utility pk-tone-neutral" onClick="{{close}}" style="min-height: 44px">cancel</button>
+<button type="button" class="pk-btn pk-btn-utility pk-tone-leave" onClick="{{doReset}}" style="min-height: 44px">reset</button>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{sDraw}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 5; background: var(--scrim); display: flex; flex-direction: column; justify-content: flex-end; align-items: center">
+<div role="dialog" aria-modal="true" aria-label="draw names" style="box-sizing: border-box; width: 100%; max-width: 440px; padding: 22px; background: var(--sheet); border: 3px solid var(--border); border-bottom: 0; border-radius: var(--radius-overlay) var(--radius-overlay) 0 0; box-shadow: var(--shadow-overlay); display: flex; flex-direction: column; gap: 14px">
+<h2 class="section" style="margin: 0">draw names now?</h2>
+<span class="body-sm" style="color: var(--ink-2)">this runs once. names and rules lock and joining closes. you won’t see who has who.</span>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<button type="button" class="pk-btn pk-btn-primary" onClick="{{doDraw}}" style="width: 100%">draw names</button>
+<button type="button" class="pk-btn pk-btn-utility pk-tone-neutral" onClick="{{close}}" style="box-sizing: border-box; width: 100%; min-height: 44px">not yet</button>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{sExchange}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 5; background: var(--scrim); display: flex; flex-direction: column; justify-content: flex-end; align-items: center">
+<div role="dialog" aria-modal="true" aria-label="start gift exchange" style="box-sizing: border-box; width: 100%; max-width: 440px; padding: 22px; background: var(--sheet); border: 3px solid var(--border); border-bottom: 0; border-radius: var(--radius-overlay) var(--radius-overlay) 0 0; box-shadow: var(--shadow-overlay); display: flex; flex-direction: column; gap: 14px">
+<sc-if value="{{early}}" hint-placeholder-val="{{true}}">
+<h2 class="section" style="margin: 0">start the gift exchange early?</h2>
+<span class="body-sm" style="color: var(--ink-2)">gift day is 24 dec. you’ll see every pet and pair, and this can’t be undone.</span>
+</sc-if>
+<sc-if value="{{onTime}}" hint-placeholder-val="{{false}}">
+<h2 class="section" style="margin: 0">start the gift exchange?</h2>
+<span class="body-sm" style="color: var(--ink-2)">you’ll see every pet and pair, and this can’t be undone.</span>
+</sc-if>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<a href="ExchangeBoard.dc.html" class="pk-btn pk-btn-primary" style="box-sizing: border-box; width: 100%; text-decoration: none">{{exchangeOk}}</a>
+<button type="button" class="pk-btn pk-btn-utility pk-tone-neutral" onClick="{{close}}" style="box-sizing: border-box; width: 100%; min-height: 44px">cancel</button>
+</div>
+</div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"panel":{"editor":"enum","options":["auto","pine","frosted glass"],"default":"auto","section":"theme"},"phase":{"editor":"enum","options":["just created","setting up","everyone joined","drawn","exchange started"],"default":"setting up","section":"prototype state"},"giftDayReached":{"editor":"boolean","default":false,"section":"prototype state"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+seed() {
+const raw = [["thảo","4827",1,1],["an","1093",0,0],["bảo","5531",1,1],["chi","8270",1,0],["duy","3164",0,0],["hà","7402",1,1],["lan","2958",1,1],["minh","6615",1,0],["my","0386",0,0],["quân","9147",1,1]];
+return raw.map((r, i) => ({ id: "n" + i, name: r[0], pin: r[1], joined: !!r[2], wish: !!r[3], host: i === 0 }));
+}
+solve(ids, rules) {
+if (ids.length < 3) return false;
+const ban = new Set(rules.map((r) => r.from + ">" + r.to));
+const used = new Set();
+const go = (k) => {
+  if (k === ids.length) return true;
+  for (const t of ids) {
+    if (t === ids[k] || used.has(t) || ban.has(ids[k] + ">" + t)) continue;
+    used.add(t); if (go(k + 1)) return true; used.delete(t);
+  }
+  return false;
+};
+return go(0);
+}
+renderVals() {
+const P = this.props, S = this.state || {};
+const set = (o) => this.setState(o);
+const phase = S.phase || P.phase || "setting up";
+const fresh = phase === "just created";
+const beforeDraw = fresh || phase === "setting up" || phase === "everyone joined";
+const drawn = phase === "drawn", exchange = phase === "exchange started";
+const forceJoined = !fresh && phase !== "setting up";
+const names = (S.names || this.seed().filter((n) => !fresh || n.host)).map((n) => (S.names ? n : forceJoined ? Object.assign({}, n, { joined: true }) : fresh ? Object.assign({}, n, { wish: false }) : n));
+const rules = S.rules || (fresh ? [] : [{ id: "r1", from: "n6", to: "n7" }, { id: "r2", from: "n7", to: "n6" }]);
+const playing = S.playing ?? true;
+const players = names.filter((n) => !n.host || playing);
+const ids = players.map((n) => n.id);
+const byId = {}; names.forEach((n) => { byId[n.id] = n; });
+const close = () => set({ sheet: null });
+const t = byId[S.target] || null;
+const rows = names.map((n) => {
+  const inDraw = !n.host || playing;
+  return {
+    id: n.id, name: n.name, pin: n.pin, host: n.host,
+    aria: "options for " + n.name,
+    joinTone: n.joined ? "action" : "neutral", joinLabel: n.joined ? "joined" : "not joined",
+    showWish: inDraw, wishTone: n.wish ? "action" : "neutral", wishLabel: n.wish ? "wishlist" : "no wishlist",
+    open: () => set({ sheet: "actions", target: n.id })
+  };
+});
+const waitingList = names.filter((n) => !n.joined).map((n) => n.name);
+const done = (on) => (on ? "background: var(--action); color: var(--on-action);" : "background: var(--panel-inner); border: 2px solid var(--border-soft); color: var(--ink);");
+const removeCheck = () => {
+  const restIds = ids.filter((x) => x !== t.id);
+  const restRules = rules.filter((r) => r.from !== t.id && r.to !== t.id);
+  if (restIds.length < 3) return "a draw needs at least 3 people.";
+  if (!this.solve(restIds, restRules)) return "with the current rules, the draw wouldn’t work. remove or change a rule first.";
+  return "";
+};
+const openRemove = () => {
+  const why = removeCheck();
+  if (why) set({ sheet: "blocked", blockedBody: why });
+  else set({ sheet: drawn ? "redraw" : "remove" });
+};
+const doRemove = () => {
+  set({ names: names.filter((n) => n.id !== t.id), rules: rules.filter((r) => r.from !== t.id && r.to !== t.id), sheet: null });
+};
+const addName = () => {
+  const parts = (S.addDraft || "").split(/[,\n]/).map((x) => x.trim()).filter(Boolean);
+  if (!parts.length) { set({ addErr: "type a name first" }); return; }
+  const taken = names.map((n) => n.name.toLowerCase());
+  const added = [], dupes = [];
+  parts.forEach((v, k) => {
+    if (taken.includes(v.toLowerCase())) { dupes.push(v); return; }
+    taken.push(v.toLowerCase());
+    added.push({ id: "n" + Date.now() + "_" + k, name: v, pin: String(1000 + Math.floor(Math.random() * 9000)), joined: false, wish: false, host: false });
+  });
+  set({ names: names.concat(added), addDraft: dupes.join(", "), addErr: dupes.length ? dupes.join(", ") + (dupes.length > 1 ? " are" : " is") + " already on the list" : "" });
+};
+const addRule = () => {
+  const f = S.ruleFrom, to = S.ruleTo;
+  let e = "";
+  if (!f || !to) e = "pick both names";
+  else if (f === to) e = "pick two different names";
+  else if (rules.some((r) => r.from === f && r.to === to)) e = "this rule is already there";
+  else if (!this.solve(ids, rules.concat([{ from: f, to }]))) e = "with this rule, the draw wouldn’t work, so it wasn’t saved.";
+  if (e) { set({ ruleErr: e }); return; }
+  set({ rules: rules.concat([{ id: "r" + Date.now(), from: f, to }]), ruleFrom: "", ruleTo: "", ruleErr: "" });
+};
+const saveRename = () => {
+  const v = (S.renameDraft || "").trim();
+  if (!v || names.some((n) => n.id !== t.id && n.name.toLowerCase() === v.toLowerCase())) { set({ renameErr: true }); return; }
+  set({ names: names.map((n) => (n.id === t.id ? Object.assign({}, n, { name: v }) : n)), sheet: null, renameErr: false });
+};
+const doDraw = () => {
+  if (this.solve(ids, rules)) set({ phase: "drawn", sheet: null, drawErr: false, names });
+  else set({ sheet: null, drawErr: true });
+};
+const early = !(P.giftDayReached ?? false);
+const panelPick = this.props.panel ?? "auto";
+const panel = panelPick === "pine" ? "pine" : panelPick === "frosted glass" ? "glass" : "glass";
+return { panel, 
+  playing, beforeDraw, drawn, exchange, afterDraw: !beforeDraw,
+  locked3: exchange, notLocked3: !exchange,
+  rows, showPins: !!S.pins, togglePins: () => set({ pins: !S.pins }),
+  pinsLabel: S.pins ? "hide pins" : "show pins", pinsPressed: S.pins ? "true" : "false",
+  namesSub: names.length + " names · " + names.filter((n) => n.joined).length + " joined",
+  addDraft: S.addDraft || "", onAdd: (e) => set({ addDraft: e.target.value, addErr: "" }), addName,
+  addErr: !!S.addErr, addErrMsg: S.addErr || "",
+  ruleRows: rules.map((r) => ({ text: (byId[r.from] || {}).name + " can’t give to " + (byId[r.to] || {}).name, removeLabel: "remove rule", remove: () => set({ rules: rules.filter((x) => x.id !== r.id) }) })),
+  hasRules: rules.length > 0, noRules: rules.length === 0,
+  opts: players.map((n) => ({ id: n.id, name: n.name })),
+  ruleFrom: S.ruleFrom || "", ruleTo: S.ruleTo || "",
+  onFrom: (e) => set({ ruleFrom: e.target.value, ruleErr: "" }), onTo: (e) => set({ ruleTo: e.target.value, ruleErr: "" }),
+  addRule, ruleErr: !!S.ruleErr, ruleErrMsg: S.ruleErr || "",
+  copy: () => set({ copied: true }), copyLabel: S.copied ? "copied" : "copy",
+  waiting: beforeDraw && (waitingList.length > 0 || ids.length < 3), ready: beforeDraw && waitingList.length === 0 && ids.length >= 3,
+  waitingText: ids.length < 3 ? "add at least 3 people who are playing before you can draw." : "waiting for " + waitingList.join(", ") + " to join.",
+  waitingNames: waitingList.join(", "),
+  drawSub: beforeDraw ? "once everyone has joined" : "done",
+  openDraw: () => set({ sheet: "draw" }), doDraw, drawErr: !!S.drawErr,
+  openExchange: () => set({ sheet: "exchange" }), early, onTime: !early,
+  exchangeOk: early ? "start anyway" : "start gift exchange",
+  d1Style: done(names.length >= 3), d1Mark: names.length >= 3 ? "✓" : "1",
+  d2Style: done(rules.length > 0), d2Mark: rules.length > 0 ? "✓" : "2",
+  d3Style: done(!!S.copied || !beforeDraw), d3Mark: (S.copied || !beforeDraw) ? "✓" : "3",
+  d4Style: done(!beforeDraw), d4Mark: !beforeDraw ? "✓" : "4",
+  d5Style: done(exchange), d5Mark: exchange ? "✓" : "5",
+  close,
+  sActions: S.sheet === "actions", sRename: S.sheet === "rename", sRemove: S.sheet === "remove", sRedraw: S.sheet === "redraw",
+  sBlocked: S.sheet === "blocked", sReset: S.sheet === "reset", sDraw: S.sheet === "draw", sExchange: S.sheet === "exchange",
+  tName: t ? t.name : "", isHostTarget: !!(t && t.host),
+  canRename: !exchange, canRemove: !!t && !t.host && !exchange,
+  canReset: !!t && !t.host && beforeDraw && t.joined, canTogglePlay: !!t && t.host && beforeDraw,
+  playLabel: playing ? "i’m not playing after all" : "i’m playing too",
+  togglePlaying: () => set({ playing: !playing, sheet: null }),
+  openRename: () => set({ sheet: "rename", renameDraft: t ? t.name : "", renameErr: false }),
+  renameDraft: S.renameDraft || "", onRename: (e) => set({ renameDraft: e.target.value, renameErr: false }), renameErr: !!S.renameErr, saveRename,
+  openRemove, doRemove, blockedBody: S.blockedBody || "",
+  removeBody: t && t.joined ? t.name + " already joined, so their pet and wishlist are deleted." : "their name and pin are deleted.",
+  openReset: () => set({ sheet: "reset" }),
+  doReset: () => set({ names: names.map((n) => (n.id === t.id ? Object.assign({}, n, { joined: false, wish: false }) : n)), sheet: null })
+};
+}
+}
+</script>
+</body>
+</html>

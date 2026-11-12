@@ -14,6 +14,7 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     // The design system is a spec, not app code.
     "design-system/**",
+    "prototype/**",
   ]),
 ]);
 

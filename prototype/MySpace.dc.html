@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>my space</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/pawker/tokens.css">
+<link rel="stylesheet" href="ds/pawker/components/bundle.css">
+<script src="ds/pawker/components/bundle.js"></script>
+<link rel="stylesheet" href="night.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@700&amp;family=Merriweather+Sans:wght@700&amp;family=Inter:wght@400;700&amp;family=Barlow:wght@400&amp;display=swap">
+<style>
+body{margin:0;background:#1C4F31}
+a{color:#F5CF6E}a:hover{color:#FFF6DF}
+.ss-row:hover{border-color:var(--border)}
+.ss-tile:hover{border-color:var(--border)}
+</style>
+</helmet>
+<div data-theme="christmas" data-panel="{{panel}}" style="isolation: isolate; --font-display: 'Be Vietnam Pro', 'Merriweather Sans', sans-serif; width: 100%; height: 844px; overflow: hidden; position: relative; box-sizing: border-box; background: var(--page); font-family: var(--font-sans); color: var(--ink); display: flex; flex-direction: column; align-items: center">
+<div aria-hidden="true" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: -1; overflow: hidden; pointer-events: none"><dc-import name="SceneSky" hint-size="100%,100%"></dc-import></div>
+<div style="box-sizing: border-box; width: 100%; max-width: 440px; padding: 18px 22px 12px; display: flex; align-items: flex-start; gap: 8px">
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; align-items: center; gap: 11px"><span style="box-sizing: border-box; width: 24px; height: 32px; display: flex; align-items: center; justify-content: center; background: var(--panel-inner); border: 2px solid var(--action); border-radius: 6px; box-shadow: var(--shadow-mark)"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" shape-rendering="crispEdges"><rect x="1" y="5" width="10" height="6" fill="var(--action)"></rect><rect x="0" y="3" width="12" height="2" fill="var(--action)"></rect><rect x="5" y="3" width="2" height="8" fill="#D6455A"></rect><rect x="3" y="1" width="2" height="2" fill="#D6455A"></rect><rect x="7" y="1" width="2" height="2" fill="#D6455A"></rect></svg></span><span class="wordmark" style="color: var(--ink)">secret santa</span></div>
+<div style="display: flex; flex-direction: column; gap: 2px; padding-left: 35px">
+<span class="title">christmas 2026</span>
+<span class="note-lg" style="color: var(--ink-2)">budget 300k · gift day 24 dec</span>
+</div>
+</div>
+<button type="button" aria-label="menu" onClick="{{openMenu}}" style="flex: none; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--panel); border: 2px solid var(--border-soft); border-radius: var(--radius-pill); box-shadow: var(--shadow-panel); color: var(--ink); cursor: pointer; padding: 0"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 12 12" shape-rendering="crispEdges" fill="currentColor"><path d="M1 2h10v1h-10zM1 3h10v1h-10zM1 5h10v1h-10zM1 6h10v1h-10zM1 8h10v1h-10zM1 9h10v1h-10z"></path></svg></button>
+</div>
+<main style="box-sizing: border-box; width: 100%; flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; align-items: center">
+<div style="box-sizing: border-box; width: 100%; max-width: 440px; flex: 1 0 auto; padding: 6px 22px 28px; display: flex; flex-direction: column; gap: 18px">
+<sc-if value="{{hasNotice}}" hint-placeholder-val="{{false}}">
+<div role="status" style="display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; background: var(--panel-inner); border: 2px solid var(--action); border-radius: var(--radius-panel)">
+<span class="body-sm" style="flex-grow: 1">{{noticeText}}</span>
+<button type="button" class="pk-btn pk-btn-utility pk-tone-neutral" onClick="{{dismissNotice}}">ok</button>
+</div>
+</sc-if>
+<sc-if value="{{onWish}}" hint-placeholder-val="{{true}}">
+<div style="display: flex; align-items: center; gap: 12px">
+<x-import component-from-global-scope="Pawker.Pet" slug="rabbit-white" state="idle" size="{{s52}}" label="your pet"></x-import>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<h1 class="headline" style="margin: 0; font-size: 24px">you’re bánh bao</h1>
+<span class="note-lg" style="color: var(--ink-2)">your santa sees this name, not yours</span>
+</div>
+</div>
+<x-import component-from-global-scope="Pawker.Panel" size="room" inner="{{yes}}">
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 14px">
+<div style="display: flex; align-items: center; gap: 8px">
+<span class="label" style="color: var(--ink-2)">your santa</span>
+<x-import component-from-global-scope="Pawker.Chip" tone="{{statusTone}}">{{statusChip}}</x-import>
+</div>
+<span class="body-sm">{{statusText}}</span>
+</div>
+</x-import>
+<div style="display: flex; align-items: baseline; gap: 8px">
+<h2 class="section" style="margin: 0; flex-grow: 1">my wishes</h2>
+<span class="note-lg" style="color: var(--ink-2)">{{wishCount}}</span>
+</div>
+<sc-if value="{{hasWishes}}" hint-placeholder-val="{{true}}">
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{items}}" as="w" hint-placeholder-count="3">
+<li style="display: flex; flex-direction: column; gap: 8px; padding: 14px; background: var(--panel); border: 2px solid var(--border-soft); border-radius: var(--radius-panel); box-shadow: var(--shadow-panel)">
+<span class="field">{{w.title}}</span>
+<span class="body-sm" style="color: var(--ink-2)">{{w.desc}}</span>
+<sc-if value="{{w.hasLink}}" hint-placeholder-val="{{false}}">
+<span class="note-lg" style="display: flex; align-items: center; gap: 6px; color: var(--ink-2)"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" shape-rendering="crispEdges" fill="currentColor"><path d="M1 3h4v1h-4zM7 3h4v1h-4zM0 4h2v1h-2zM4 4h1v1h-1zM7 4h1v1h-1zM10 4h2v1h-2zM0 5h1v1h-1zM3 5h6v1h-6zM11 5h1v1h-1zM0 6h2v1h-2zM4 6h1v1h-1zM7 6h1v1h-1zM10 6h2v1h-2zM1 7h4v1h-4zM7 7h4v1h-4z"></path></svg>{{w.linkHost}}</span>
+</sc-if>
+<div style="display: flex; gap: 8px; justify-content: flex-end">
+<button type="button" class="pk-btn pk-btn-utility pk-tone-neutral" onClick="{{w.edit}}" aria-label="{{w.editLabel}}">edit</button>
+<button type="button" class="pk-btn pk-btn-utility pk-tone-leave" onClick="{{w.remove}}" aria-label="{{w.removeLabel}}">remove</button>
+</div>
+</li>
+</sc-for>
+</ul>
+</sc-if>
+<sc-if value="{{noWishes}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 24px 12px; text-align: center; border: 2px solid var(--border-soft); border-radius: var(--radius-panel)">
+<span class="field">no wishes yet</span>
+<span class="body-sm" style="color: var(--ink-2)">add a few so your santa knows what you’d like.</span>
+</div>
+</sc-if>
+<button type="button" class="pk-btn pk-btn-primary" onClick="{{openNew}}" style="box-sizing: border-box; width: 100%; gap: 8px"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" shape-rendering="crispEdges" fill="currentColor"><path d="M5 1h2v1h-2zM5 2h2v1h-2zM5 3h2v1h-2zM5 4h2v1h-2zM1 5h10v1h-10zM1 6h10v1h-10zM5 7h2v1h-2zM5 8h2v1h-2zM5 9h2v1h-2zM5 10h2v1h-2z"></path></svg>add a wish</button>
+</sc-if>
+<sc-if value="{{onGift}}" hint-placeholder-val="{{false}}">
+<sc-if value="{{beforeDraw}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 48px 12px; text-align: center">
+<span style="display: flex; color: var(--action)"><svg aria-hidden="true" width="48" height="48" viewBox="0 0 12 12" shape-rendering="crispEdges" fill="currentColor"><path d="M2 1h2v1h-2zM8 1h2v1h-2zM3 2h2v1h-2zM7 2h2v1h-2zM1 3h10v1h-10zM1 4h1v1h-1zM5 4h2v1h-2zM10 4h1v1h-1zM1 5h10v1h-10zM2 6h1v1h-1zM5 6h2v1h-2zM9 6h1v1h-1zM2 7h1v1h-1zM5 7h2v1h-2zM9 7h1v1h-1zM2 8h1v1h-1zM5 8h2v1h-2zM9 8h1v1h-1zM2 9h1v1h-1zM5 9h2v1h-2zM9 9h1v1h-1zM2 10h8v1h-8z"></path></svg></span>
+<h1 class="headline" style="margin: 0; font-size: 24px">hang tight, no draw yet</h1>
+<span class="body-sm" style="color: var(--ink-2); max-width: 300px">we’re waiting for everyone to join. once your host draws names, your giftee shows up here. gift day is 24 dec.</span>
+</div>
+</sc-if>
+<sc-if value="{{drawDone}}" hint-placeholder-val="{{true}}">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; padding-top: 4px">
+<x-import component-from-global-scope="Pawker.Pet" slug="ferret-silver" state="idle" size="{{s96}}" label="your giftee’s pet"></x-import>
+<span class="eyebrow" style="color: var(--ink-2)">you’re gifting</span>
+<h1 class="headline" style="margin: 0">mochi</h1>
+</div>
+<sc-if value="{{notPreparing}}" hint-placeholder-val="{{true}}">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<button type="button" class="pk-btn pk-btn-primary" onClick="{{startPreparing}}" style="box-sizing: border-box; width: 100%">i’m preparing the gift</button>
+<span class="note-lg" style="color: var(--ink-2); text-align: center">mochi sees that you’ve opened their wishlist. tap this once you start buying, so they hold off on changes.</span>
+</div>
+</sc-if>
+<sc-if value="{{preparing}}" hint-placeholder-val="{{false}}">
+<x-import component-from-global-scope="Pawker.Panel" size="room" inner="{{yes}}">
+<div style="display: flex; align-items: center; gap: 10px; padding: 12px 14px">
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 4px">
+<x-import component-from-global-scope="Pawker.Chip" tone="action">preparing</x-import>
+<span class="body-sm">mochi sees that you’re preparing their gift.</span>
+</div>
+<button type="button" class="pk-btn pk-btn-utility pk-tone-neutral" onClick="{{stopPreparing}}">undo</button>
+</div>
+</x-import>
+</sc-if>
+<h2 class="section" style="margin: 0">mochi’s wishlist</h2>
+<sc-if value="{{gHas}}" hint-placeholder-val="{{true}}">
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{gItems}}" as="g" hint-placeholder-count="2">
+<li style="display: flex; flex-direction: column; gap: 8px; padding: 14px; background: var(--panel); border: 2px solid var(--border-soft); border-radius: var(--radius-panel); box-shadow: var(--shadow-panel)">
+<span class="field">{{g.title}}</span>
+<span class="body-sm" style="color: var(--ink-2)">{{g.desc}}</span>
+<sc-if value="{{g.hasLink}}" hint-placeholder-val="{{false}}">
+<a href="{{g.href}}" target="_blank" rel="noopener" class="label" style="display: inline-flex; align-items: center; gap: 6px; min-height: 44px; width: fit-content"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" shape-rendering="crispEdges" fill="currentColor"><path d="M1 3h4v1h-4zM7 3h4v1h-4zM0 4h2v1h-2zM4 4h1v1h-1zM7 4h1v1h-1zM10 4h2v1h-2zM0 5h1v1h-1zM3 5h6v1h-6zM11 5h1v1h-1zM0 6h2v1h-2zM4 6h1v1h-1zM7 6h1v1h-1zM10 6h2v1h-2zM1 7h4v1h-4zM7 7h4v1h-4z"></path></svg><span>open link · {{g.linkHost}}</span></a>
+</sc-if>
+</li>
+</sc-for>
+</ul>
+</sc-if>
+<sc-if value="{{gNone}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 24px 16px; text-align: center; border: 2px solid var(--border-soft); border-radius: var(--radius-panel)">
+<span class="field">mochi is still thinking</span>
+<span class="body-sm" style="color: var(--ink-2)">no wishes yet. mochi is deciding what they’d like and will add a few soon.</span>
+<sc-if value="{{canNudge}}" hint-placeholder-val="{{true}}">
+<button type="button" class="pk-btn pk-btn-utility pk-tone-neutral" onClick="{{nudge}}" style="min-height: 44px"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" shape-rendering="crispEdges" fill="currentColor"><path d="M5 1h2v1h-2zM4 2h1v1h-1zM7 2h1v1h-1zM3 3h1v1h-1zM8 3h1v1h-1zM3 4h1v1h-1zM8 4h1v1h-1zM3 5h1v1h-1zM8 5h1v1h-1zM2 6h1v1h-1zM9 6h1v1h-1zM1 7h10v1h-10zM5 9h2v1h-2z"></path></svg>nudge mochi</button>
+<span class="note-lg" style="color: var(--ink-2)">mochi gets a reminder from “your santa”, never your name.</span>
+</sc-if>
+<sc-if value="{{nudged}}" hint-placeholder-val="{{false}}">
+<div role="status" style="display: flex; flex-direction: column; align-items: center; gap: 6px">
+<x-import component-from-global-scope="Pawker.Chip" tone="action">nudged</x-import>
+<span class="note-lg" style="color: var(--ink-2)">mochi sees a reminder next time they open the app. you can nudge again tomorrow.</span>
+</div>
+</sc-if>
+</div>
+</sc-if>
+</sc-if>
+</sc-if>
+</div>
+<div aria-hidden="true" style="width: 100%; flex: none; margin-top: auto"><dc-import name="SceneGround" hint-size="100%,96px"></dc-import></div>
+</main>
+<nav aria-label="my space" style="box-sizing: border-box; width: 100%; flex: none; display: flex; justify-content: center; background: var(--panel); border-top: 2px solid var(--border-soft)">
+<div style="width: 100%; max-width: 440px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr))">
+<button type="button" aria-current="{{wishCurrent}}" onClick="{{goWish}}" class="label" style="min-height: 60px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: transparent; border: 0; cursor: pointer; {{wishTabStyle}}"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 12 12" shape-rendering="crispEdges" fill="currentColor"><path d="M1 2h2v1h-2zM4 2h7v1h-7zM1 3h2v1h-2zM4 3h7v1h-7zM1 5h2v1h-2zM4 5h7v1h-7zM1 6h2v1h-2zM4 6h7v1h-7zM1 8h2v1h-2zM4 8h7v1h-7zM1 9h2v1h-2zM4 9h7v1h-7z"></path></svg><span>my wishlist</span></button>
+<button type="button" aria-current="{{giftCurrent}}" onClick="{{goGift}}" class="label" style="min-height: 60px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: transparent; border: 0; cursor: pointer; {{giftTabStyle}}"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 12 12" shape-rendering="crispEdges" fill="currentColor"><path d="M2 1h2v1h-2zM8 1h2v1h-2zM3 2h2v1h-2zM7 2h2v1h-2zM1 3h10v1h-10zM1 4h1v1h-1zM5 4h2v1h-2zM10 4h1v1h-1zM1 5h10v1h-10zM2 6h1v1h-1zM5 6h2v1h-2zM9 6h1v1h-1zM2 7h1v1h-1zM5 7h2v1h-2zM9 7h1v1h-1zM2 8h1v1h-1zM5 8h2v1h-2zM9 8h1v1h-1zM2 9h1v1h-1zM5 9h2v1h-2zM9 9h1v1h-1zM2 10h8v1h-8z"></path></svg><span>my giftee</span></button>
+</div>
+</nav>
+<sc-if value="{{sCelebrate}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 5; background: var(--scrim); display: flex; flex-direction: column; justify-content: flex-end; align-items: center">
+<div role="dialog" aria-modal="true" aria-label="names are drawn" style="box-sizing: border-box; width: 100%; max-width: 440px; padding: 22px; background: var(--sheet); border: 3px solid var(--border); border-bottom: 0; border-radius: var(--radius-overlay) var(--radius-overlay) 0 0; box-shadow: var(--shadow-overlay); display: flex; flex-direction: column; gap: 14px; align-items: center; text-align: center">
+<span style="display: flex; color: var(--action); padding-top: 6px"><svg aria-hidden="true" width="48" height="48" viewBox="0 0 12 12" shape-rendering="crispEdges" fill="currentColor"><path d="M2 1h2v1h-2zM8 1h2v1h-2zM3 2h2v1h-2zM7 2h2v1h-2zM1 3h10v1h-10zM1 4h1v1h-1zM5 4h2v1h-2zM10 4h1v1h-1zM1 5h10v1h-10zM2 6h1v1h-1zM5 6h2v1h-2zM9 6h1v1h-1zM2 7h1v1h-1zM5 7h2v1h-2zM9 7h1v1h-1zM2 8h1v1h-1zM5 8h2v1h-2zM9 8h1v1h-1zM2 9h1v1h-1zM5 9h2v1h-2zM9 9h1v1h-1zM2 10h8v1h-8z"></path></svg></span>
+<h2 class="headline" style="margin: 0">yay, names are drawn!</h2>
+<span class="body-sm" style="color: var(--ink-2); max-width: 300px">you’re officially a secret santa. see who you’re gifting and what they’d like.</span>
+<div style="box-sizing: border-box; width: 100%; display: flex; flex-direction: column; gap: 10px; padding-top: 4px">
+<button type="button" class="pk-btn pk-btn-primary" onClick="{{celebrateGo}}" style="box-sizing: border-box; width: 100%">see my giftee</button>
+<button type="button" class="pk-btn pk-btn-utility pk-tone-neutral" onClick="{{celebrateLater}}" style="box-sizing: border-box; width: 100%">later</button>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{sMenu}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 5; background: var(--scrim); display: flex; flex-direction: column; justify-content: flex-end; align-items: center">
+<div role="dialog" aria-modal="true" aria-label="menu" style="box-sizing: border-box; width: 100%; max-width: 440px; padding: 22px; background: var(--sheet); border: 3px solid var(--border); border-bottom: 0; border-radius: var(--radius-overlay) var(--radius-overlay) 0 0; box-shadow: var(--shadow-overlay); display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 8px"><h2 class="section" style="margin: 0; flex-grow: 1">menu</h2><button type="button" aria-label="close" onClick="{{close}}" style="flex: none; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: transparent; border: 0; color: var(--ink-2); cursor: pointer; padding: 0"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 12 12" shape-rendering="crispEdges" fill="currentColor"><path d="M1 1h2v1h-2zM9 1h2v1h-2zM2 2h2v1h-2zM8 2h2v1h-2zM3 3h2v1h-2zM7 3h2v1h-2zM4 4h4v1h-4zM5 5h2v1h-2zM4 6h4v1h-4zM3 7h2v1h-2zM7 7h2v1h-2zM2 8h2v1h-2zM8 8h2v1h-2zM1 9h2v1h-2zM9 9h2v1h-2z"></path></svg></button></div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<a href="InstructionsAgain.dc.html" class="field" style="box-sizing: border-box; width: 100%; min-height: 48px; display: flex; align-items: center; gap: 10px; padding: 10px 16px; background: var(--panel-inner); border: 2px solid var(--border-soft); border-radius: var(--radius-panel); color: var(--ink); text-decoration: none; cursor: pointer; text-align: left"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 12 12" shape-rendering="crispEdges" fill="currentColor"><path d="M3 1h6v1h-6zM2 2h1v1h-1zM9 2h1v1h-1zM1 3h1v1h-1zM5 3h2v1h-2zM10 3h1v1h-1zM1 4h1v1h-1zM10 4h1v1h-1zM1 5h1v1h-1zM5 5h2v1h-2zM10 5h1v1h-1zM1 6h1v1h-1zM5 6h2v1h-2zM10 6h1v1h-1zM1 7h1v1h-1zM5 7h2v1h-2zM10 7h1v1h-1zM2 8h1v1h-1zM9 8h1v1h-1zM3 9h6v1h-6z"></path></svg>how it works</a>
+<sc-if value="{{isHost}}" hint-placeholder-val="{{false}}">
+<a href="Manage.dc.html" class="field" style="box-sizing: border-box; width: 100%; min-height: 48px; display: flex; align-items: center; gap: 10px; padding: 10px 16px; background: var(--panel-inner); border: 2px solid var(--border-soft); border-radius: var(--radius-panel); color: var(--ink); text-decoration: none; cursor: pointer; text-align: left"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 12 12" shape-rendering="crispEdges" fill="currentColor"><path d="M1 2h5v1h-5zM7 2h4v1h-4zM1 3h5v1h-5zM7 3h4v1h-4zM1 5h2v1h-2zM4 5h7v1h-7zM1 6h2v1h-2zM4 6h7v1h-7zM1 8h7v1h-7zM9 8h2v1h-2zM1 9h7v1h-7zM9 9h2v1h-2z"></path></svg>manage this group</a>
+</sc-if>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{sEditor}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 5; background: var(--scrim); display: flex; flex-direction: column; justify-content: flex-end; align-items: center">
+<div role="dialog" aria-modal="true" aria-label="wish editor" style="box-sizing: border-box; width: 100%; max-width: 440px; padding: 22px; background: var(--sheet); border: 3px solid var(--border); border-bottom: 0; border-radius: var(--radius-overlay) var(--radius-overlay) 0 0; box-shadow: var(--shadow-overlay); display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 8px"><h2 class="section" style="margin: 0; flex-grow: 1">{{editorTitle}}</h2><button type="button" aria-label="close" onClick="{{close}}" style="flex: none; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: transparent; border: 0; color: var(--ink-2); cursor: pointer; padding: 0"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 12 12" shape-rendering="crispEdges" fill="currentColor"><path d="M1 1h2v1h-2zM9 1h2v1h-2zM2 2h2v1h-2zM8 2h2v1h-2zM3 3h2v1h-2zM7 3h2v1h-2zM4 4h4v1h-4zM5 5h2v1h-2zM4 6h4v1h-4zM3 7h2v1h-2zM7 7h2v1h-2zM2 8h2v1h-2zM8 8h2v1h-2zM1 9h2v1h-2zM9 9h2v1h-2z"></path></svg></button></div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="w-title" class="label" style="color: var(--ink-2)">title <span aria-hidden="true">*</span></label>
+<x-import component-from-global-scope="Pawker.Field" required="{{yes}}" id="w-title" value="{{dTitle}}" on-change="{{onTitle}}" invalid="{{eTitle}}" placeholder="what would you like?"></x-import>
+<sc-if value="{{eTitle}}" hint-placeholder-val="{{false}}"><span role="alert" class="label" style="color: var(--warm13-ink)">{{eTitleMsg}}</span></sc-if>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="w-desc" class="label" style="color: var(--ink-2)">description <span aria-hidden="true">*</span></label>
+<textarea required="{{yes}}" id="w-desc" class="{{descClass}}" rows="3" value="{{dDesc}}" onChange="{{onDesc}}" placeholder="size, colour, anything that helps" style="resize: none; text-align: left"></textarea>
+<sc-if value="{{eDesc}}" hint-placeholder-val="{{false}}"><span role="alert" class="label" style="color: var(--warm13-ink)">{{eDescMsg}}</span></sc-if>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="w-link" class="label" style="color: var(--ink-2)">link (optional)</label>
+<x-import component-from-global-scope="Pawker.Field" id="w-link" value="{{dLink}}" on-change="{{onLink}}" invalid="{{eLink}}" placeholder="shopee.vn/..."></x-import>
+<sc-if value="{{eLink}}" hint-placeholder-val="{{false}}"><span role="alert" class="label" style="color: var(--warm13-ink)">{{eLinkMsg}}</span></sc-if>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; padding-top: 4px">
+<button type="button" class="pk-btn pk-btn-primary" onClick="{{save}}" style="box-sizing: border-box; width: 100%">save wish</button>
+<button type="button" class="pk-btn pk-btn-utility pk-tone-neutral" onClick="{{discard}}" style="box-sizing: border-box; width: 100%; min-height: 44px">discard</button>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{sWarnEdit}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 5; background: var(--scrim); display: flex; flex-direction: column; justify-content: flex-end; align-items: center">
+<div role="dialog" aria-modal="true" aria-label="your santa is preparing your gift" style="box-sizing: border-box; width: 100%; max-width: 440px; padding: 22px; background: var(--sheet); border: 3px solid var(--border); border-bottom: 0; border-radius: var(--radius-overlay) var(--radius-overlay) 0 0; box-shadow: var(--shadow-overlay); display: flex; flex-direction: column; gap: 14px">
+<h2 class="section" style="margin: 0">your santa is preparing your gift</h2>
+<span class="body-sm" style="color: var(--ink-2)">changing this wish now could mean a gift you no longer want.</span>
+<div style="display: flex; gap: 10px; justify-content: flex-end">
+<button type="button" class="pk-btn pk-btn-utility pk-tone-neutral" onClick="{{close}}" style="min-height: 44px">cancel</button>
+<button type="button" class="pk-btn pk-btn-utility pk-tone-neutral" onClick="{{editAnyway}}" style="min-height: 44px">edit anyway</button>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{sRemove}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 5; background: var(--scrim); display: flex; flex-direction: column; justify-content: flex-end; align-items: center">
+<div role="dialog" aria-modal="true" aria-label="remove this wish" style="box-sizing: border-box; width: 100%; max-width: 440px; padding: 22px; background: var(--sheet); border: 3px solid var(--border); border-bottom: 0; border-radius: var(--radius-overlay) var(--radius-overlay) 0 0; box-shadow: var(--shadow-overlay); display: flex; flex-direction: column; gap: 14px">
+<h2 class="section" style="margin: 0">remove “{{pendingTitle}}”?</h2>
+<sc-if value="{{preparingWarn}}" hint-placeholder-val="{{false}}">
+<span class="body-sm" style="color: var(--ink-2)">your santa is preparing your gift. removing this wish now could mean a gift you no longer want.</span>
+</sc-if>
+<sc-if value="{{notPreparingWarn}}" hint-placeholder-val="{{true}}">
+<span class="body-sm" style="color: var(--ink-2)">your santa won’t see it any more.</span>
+</sc-if>
+<div style="display: flex; gap: 10px; justify-content: flex-end">
+<button type="button" class="pk-btn pk-btn-utility pk-tone-neutral" onClick="{{close}}" style="min-height: 44px">keep it</button>
+<button type="button" class="pk-btn pk-btn-utility pk-tone-leave" onClick="{{confirmRemove}}" style="min-height: 44px">remove</button>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{sDiscard}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 5; background: var(--scrim); display: flex; flex-direction: column; justify-content: flex-end; align-items: center">
+<div role="dialog" aria-modal="true" aria-label="discard changes" style="box-sizing: border-box; width: 100%; max-width: 440px; padding: 22px; background: var(--sheet); border: 3px solid var(--border); border-bottom: 0; border-radius: var(--radius-overlay) var(--radius-overlay) 0 0; box-shadow: var(--shadow-overlay); display: flex; flex-direction: column; gap: 14px">
+<h2 class="section" style="margin: 0">discard your changes?</h2>
+<span class="body-sm" style="color: var(--ink-2)">what you typed in this wish will be lost.</span>
+<div style="display: flex; gap: 10px; justify-content: flex-end">
+<button type="button" class="pk-btn pk-btn-utility pk-tone-neutral" onClick="{{backToEditor}}" style="min-height: 44px">keep editing</button>
+<button type="button" class="pk-btn pk-btn-utility pk-tone-leave" onClick="{{close}}" style="min-height: 44px">discard</button>
+</div>
+</div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"panel":{"editor":"enum","options":["auto","pine","frosted glass"],"default":"auto","section":"theme"},"startTab":{"editor":"enum","options":["wishlist","giftee"],"default":"wishlist","section":"prototype state"},"drawDone":{"editor":"boolean","default":true,"section":"prototype state"},"firstAfterDraw":{"editor":"boolean","default":false,"section":"prototype state"},"mySantaStatus":{"editor":"enum","options":["not viewed yet","viewed","preparing"],"default":"viewed","section":"prototype state"},"gifteeHasWishes":{"editor":"boolean","default":true,"section":"prototype state"},"isHost":{"editor":"boolean","default":false,"section":"prototype state"},"notice":{"editor":"enum","options":["none","re-draw","wrong pet warning","nudged by santa"],"default":"none","section":"prototype state"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+seed() {
+return [
+  { id: "w1", title: "một đôi tất len", desc: "thật ấm, cỡ 38 đến 40", link: "" },
+  { id: "w2", title: "a book you loved this year", desc: "any genre, tell me why you picked it", link: "" },
+  { id: "w3", title: "a small desk plant", desc: "something that’s hard to kill", link: "https://tiki.vn/cay-de-ban" }
+];
+}
+renderVals() {
+const P = this.props, S = this.state || {};
+const set = (o) => this.setState(o);
+const hostOf = (l) => { const m = /^(?:https?:\/\/)?([^\/\s]+)/i.exec(l || ""); return m ? m[1] : ""; };
+const hrefOf = (l) => (!l ? "" : /^https?:\/\//i.test(l) ? l : "https://" + l);
+const tab = S.tab || P.startTab || "wishlist";
+const drawDone = P.drawDone ?? true;
+const status = P.mySantaStatus ?? "viewed";
+const notice = S.noticeGone ? "none" : (P.notice ?? "none");
+const wishes = S.wishes || this.seed();
+const preparingWarn = drawDone && status === "preparing";
+const close = () => set({ sheet: null });
+const startEdit = (w) => set({ sheet: "editor", editId: w ? w.id : null, dTitle: w ? w.title : "", dDesc: w ? w.desc : "", dLink: w ? w.link : "", errs: {}, dirty: false });
+const items = wishes.map((w) => Object.assign({}, w, {
+  hasLink: !!w.link, linkHost: hostOf(w.link),
+  editLabel: "edit " + w.title, removeLabel: "remove " + w.title,
+  edit: () => (preparingWarn ? set({ sheet: "warn-edit", pendingId: w.id }) : startEdit(w)),
+  remove: () => set({ sheet: "remove", pendingId: w.id })
+}));
+const pending = wishes.find((w) => w.id === S.pendingId);
+const errs = S.errs || {};
+const save = () => {
+  const t = (S.dTitle || "").trim(), d = (S.dDesc || "").trim(), l = (S.dLink || "").trim();
+  const e = {};
+  if (!t) e.title = "add a title";
+  if (!d) e.desc = "add a few words, so your santa knows what you mean";
+  if (l && !/^(https?:\/\/)?[^\s\/.]+(\.[^\s\/.]+)+(\/\S*)?$/i.test(l)) e.link = "this link doesn’t look right. try something like shopee.vn or a full https:// link";
+  if (Object.keys(e).length) { set({ errs: e }); return; }
+  const next = S.editId
+    ? wishes.map((w) => (w.id === S.editId ? Object.assign({}, w, { title: t, desc: d, link: l }) : w))
+    : wishes.concat([{ id: "w" + Date.now(), title: t, desc: d, link: l }]);
+  set({ wishes: next, sheet: null });
+};
+const STATUS = {
+  "not viewed yet": ["not viewed yet", "neutral", "your santa hasn’t opened your wishlist yet."],
+  "viewed": ["viewed", "neutral", "your santa has seen your wishlist."],
+  "preparing": ["preparing", "action", "your santa is preparing your gift. changing a wish now could spoil it."]
+};
+const st = drawDone ? STATUS[status] : ["not drawn yet", "neutral", "names aren’t drawn yet. your santa sees this list after the draw."];
+const gWishes = [
+  { title: "a board game for 4", desc: "something we can play at tết", link: "" },
+  { title: "a big mug", desc: "for tea, plain colour", link: "https://shopee.vn/ly-su" }
+].map((g) => Object.assign({}, g, { hasLink: !!g.link, linkHost: hostOf(g.link), href: hrefOf(g.link) }));
+const gHas = P.gifteeHasWishes ?? true;
+const on = "color: var(--action); box-shadow: inset 0 3px 0 var(--action);";
+const off = "color: var(--ink-2);";
+const preparing = !!S.preparing;
+const panelPick = this.props.panel ?? "auto";
+const panel = panelPick === "pine" ? "pine" : panelPick === "frosted glass" ? "glass" : "glass";
+return { panel, 
+  yes: true, s52: 52, s96: 96,
+  onWish: tab === "wishlist", onGift: tab === "giftee",
+  wishTabStyle: tab === "wishlist" ? on : off, giftTabStyle: tab === "giftee" ? on : off,
+  wishCurrent: tab === "wishlist" ? "page" : "false", giftCurrent: tab === "giftee" ? "page" : "false",
+  goWish: () => set({ tab: "wishlist", sheet: null }), goGift: () => set({ tab: "giftee", sheet: null }),
+  openMenu: () => set({ sheet: "menu" }), close, isHost: P.isHost ?? false,
+  hasNotice: notice !== "none",
+  noticeText: notice === "re-draw" ? "a member left, so names were drawn again. you have a new giftee." : notice === "nudged by santa" ? "your santa nudged you: add a few wishes so they know what to get you." : "someone picked the wrong pet 5 times while trying to open your space. if it wasn’t you, tell your host.",
+  dismissNotice: () => set({ noticeGone: true }),
+  statusChip: st[0], statusTone: st[1], statusText: st[2],
+  items, hasWishes: wishes.length > 0, noWishes: wishes.length === 0,
+  wishCount: wishes.length === 1 ? "1 wish" : wishes.length + " wishes",
+  openNew: () => startEdit(null),
+  beforeDraw: !drawDone, drawDone,
+  preparing, notPreparing: !preparing,
+  startPreparing: () => set({ preparing: true }), stopPreparing: () => set({ preparing: false }),
+  gItems: gWishes, gHas, gNone: !gHas,
+  canNudge: !S.nudged, nudged: !!S.nudged, nudge: () => set({ nudged: true }),
+  sCelebrate: drawDone && (P.firstAfterDraw ?? false) && !S.celebrateGone && !S.sheet,
+  celebrateGo: () => set({ celebrateGone: true, tab: "giftee" }), celebrateLater: () => set({ celebrateGone: true }),
+  sMenu: S.sheet === "menu", sEditor: S.sheet === "editor", sWarnEdit: S.sheet === "warn-edit",
+  sRemove: S.sheet === "remove", sDiscard: S.sheet === "discard",
+  editorTitle: S.editId ? "edit wish" : "new wish",
+  dTitle: S.dTitle || "", dDesc: S.dDesc || "", dLink: S.dLink || "",
+  onTitle: (e) => set({ dTitle: e.target.value, dirty: true }),
+  onDesc: (e) => set({ dDesc: e.target.value, dirty: true }),
+  onLink: (e) => set({ dLink: e.target.value, dirty: true }),
+  eTitle: !!errs.title, eDesc: !!errs.desc, eLink: !!errs.link,
+  eTitleMsg: errs.title || "", eDescMsg: errs.desc || "", eLinkMsg: errs.link || "",
+  descClass: errs.desc ? "pk-field pk-field-invalid" : "pk-field",
+  save, discard: () => (S.dirty ? set({ sheet: "discard" }) : close()),
+  backToEditor: () => set({ sheet: "editor" }),
+  editAnyway: () => startEdit(pending),
+  pendingTitle: pending ? pending.title : "", preparingWarn, notPreparingWarn: !preparingWarn,
+  confirmRemove: () => set({ wishes: wishes.filter((w) => w.id !== S.pendingId), sheet: null })
+};
+}
+}
+</script>
+</body>
+</html>
