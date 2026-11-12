@@ -244,3 +244,35 @@ body {
   max-width: var(--dead-end-text);
   color: var(--ink-2);
 }
+
+/* choose your pet: four tiles a row, the picked one ringed in gold. */
+.pet-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-10);
+}
+
+.pet-tile {
+  box-sizing: border-box;
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: var(--panel);
+  border: var(--stroke-ui) solid var(--border-soft);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--shadow-panel);
+  cursor: pointer;
+}
+
+.pet-tile:hover {
+  border-color: var(--border);
+}
+
+.pet-tile-on,
+.pet-tile-on:hover {
+  border: var(--stroke-heavy) solid var(--action);
+  box-shadow: var(--shadow-mark);
+}

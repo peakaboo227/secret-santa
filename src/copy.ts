@@ -52,6 +52,32 @@ export const copy = {
       next: "saved it, choose my pet",
     },
   },
+  /** The group block under the wordmark. {budget} and {day} are filled in from the group. */
+  group: {
+    info: "budget {budget} · gift day {day}",
+  },
+  months: ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"],
+  /** choose your pet (prototype/ChoosePet.dc.html). {n} is the pet's number in the grid. */
+  choosePet: {
+    back: "back",
+    heading: "choose your pet",
+    intro:
+      "your santa only ever sees your pet and pet name, never your real name. remember which one you pick: it’s how you get back in on a new phone.",
+    pets: "pets",
+    pet: "pet {n}",
+    shared: "others can pick the same pet. your pet name tells you apart.",
+    confirm: "this is my pet",
+    pickFirst: "pick a pet first",
+    saveFailed: "couldn’t save your pet. try again in a moment.",
+  },
+  /** meet your pet (prototype/MeetPet.dc.html). {pet} is the member's own pet name. */
+  meetPet: {
+    petLabel: "your pet",
+    eyebrow: "meet your pet",
+    heading: "you’re {pet}",
+    body: "your santa will see {pet} and your wishlist, never your name.",
+    continue: "continue",
+  },
   /** link not found (prototype/NotFound.dc.html) */
   notFound: {
     petLabel: "a sleepy member",
