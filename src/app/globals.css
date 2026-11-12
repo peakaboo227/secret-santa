@@ -50,23 +50,6 @@ body {
   margin-top: auto;
 }
 
-.home {
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.home .headline,
-.home-line {
-  margin: 0;
-  color: var(--ink);
-}
-
-.home-line {
-  color: var(--ink-2);
-}
-
 /*
  * Sizes the prototype uses that the boo design system has no token for yet.
  * Defined once here so screens still go through var(--…). Candidates to add to boo itself.
@@ -82,6 +65,14 @@ body {
   --checkbox-size: 22px;
   --pin-size: 36px;
   --icon-lg: 24px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --row-min: 52px;
+  --row-min-lg: 56px;
+  --back-min: 36px;
+  --field-height: 46px;
+  --mark-size: 28px;
+  --manage-name-size: 24px;
   --how-art-height: 140px;
   --how-number-size: 36px;
   --how-number-text: 18px;
@@ -325,4 +316,209 @@ body {
   flex-direction: column;
   gap: var(--space-4);
   padding-top: var(--space-6);
+}
+
+.col h2,
+.manage-main h2,
+.manage-head h1 {
+  margin: 0;
+}
+
+/* app home */
+.home-pets {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: var(--space-14);
+  padding: var(--space-24) 0 var(--space-8);
+}
+
+.home-groups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+}
+
+.col .group-row {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: var(--row-min-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-10);
+  padding: var(--space-12) var(--space-16);
+  background: var(--panel);
+  border: var(--stroke-ui) solid var(--border-soft);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--shadow-panel);
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.col .group-row:hover {
+  border-color: var(--border);
+}
+
+.group-row-text {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.group-row-icon {
+  display: flex;
+  color: var(--ink-2);
+}
+
+.no-groups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--space-16);
+  border: var(--stroke-ui) solid var(--border-soft);
+  border-radius: var(--radius-panel);
+}
+
+/* manage page: a short header, then the five-step checklist. */
+.manage-head,
+.manage-main {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--column-width);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  color: var(--ink);
+}
+
+.manage-head {
+  padding: var(--space-18) var(--space-22) var(--space-8);
+  gap: var(--space-8);
+}
+
+.manage-head-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.manage-head .manage-back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-height: var(--back-min);
+  width: fit-content;
+  color: var(--ink-2);
+  text-decoration: none;
+}
+
+.manage-name {
+  font-size: var(--manage-name-size);
+}
+
+.manage-main {
+  flex: 1 0 auto;
+  padding: var(--space-8) var(--space-22) var(--space-32);
+  gap: var(--space-16);
+}
+
+.manage-step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  padding: var(--space-16);
+  background: var(--panel);
+  border: var(--stroke-ui) solid var(--border-soft);
+  border-radius: var(--radius-step);
+  box-shadow: var(--shadow-step);
+}
+
+.manage-step-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-10);
+}
+
+.manage-step-title {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.manage-mark {
+  flex: none;
+  box-sizing: border-box;
+  width: var(--mark-size);
+  height: var(--mark-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  background: var(--panel-inner);
+  border: var(--stroke-ui) solid var(--border-soft);
+  color: var(--ink);
+}
+
+.manage-mark-done {
+  background: var(--action);
+  border-color: var(--action);
+  color: var(--on-action);
+}
+
+.name-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.name-row {
+  box-sizing: border-box;
+  min-height: var(--row-min);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: var(--space-8) var(--space-12);
+  background: var(--panel-inner);
+  border: var(--stroke-ui) solid var(--border-soft);
+  border-radius: var(--radius-panel);
+}
+
+.chip-row {
+  display: flex;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.link-row {
+  display: flex;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.link-text {
+  flex-grow: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: var(--space-12);
+  background: var(--white);
+  border: var(--stroke-ui) solid var(--border);
+  border-radius: var(--radius-field);
+  letter-spacing: 0.04em;
+}
+
+.pk-btn.tall {
+  min-height: var(--field-height);
+}
+
+.manage-main .wide {
+  box-sizing: border-box;
+  width: 100%;
 }

@@ -18,8 +18,20 @@ or see secrets.
 
 The link is: `<your app address>/owner/<OWNER_LINK_SECRET>`
 
-To find the secret: Vercel, your project, **Settings**, **Environment Variables**, `OWNER_LINK_SECRET`,
-then click the eye icon to show the value. Don't share the link: anyone with it can manage every group.
+It is also the only way to create a group: a device that has opened the owner link sees "create a group"
+on the app home. Other devices don't.
+
+To find the secret: Vercel, your project, **Settings**, **Environment Variables**, `OWNER_LINK_SECRET`.
+Each environment (Production, Preview, Development) has its own value. Vercel hides Production and Preview
+values after saving ("sensitive"), so keep a copy somewhere safe; if you lose one, edit it to a new value
+(letters and numbers only) and redeploy. Don't share the link: anyone with it can manage every group.
+
+## Creating a group
+
+1. Open the owner link once on your device.
+2. On the app home, tap "create a group": group details, your name, your pin.
+3. Choose your character. If you play, you see your character name and "how it works".
+4. You land on the manage page. It's also listed under "groups i manage" on the app home.
 
 ## Running it on a laptop
 

@@ -8,9 +8,58 @@ export const copy = {
   },
   /** The product name in the wordmark, top-left on every screen. */
   wordmark: "secret santa",
+  /** app home (prototype/AppHome.dc.html). {names} is "1 name" or "3 names"; {joined} is a number. */
   home: {
-    appName: "secret santa",
-    line: "open the game link your host sent you",
+    petLabel: "a member",
+    create: "create a group",
+    groups: "groups i manage",
+    summary: "{names} · {joined} joined",
+    notDrawn: "not drawn yet",
+    noGroups: "no groups on this device",
+    noGroupsBody:
+      "made a group on another phone? open its game link and sign in with your name, pin and character. manage shows up for the host.",
+  },
+  /** How many names are on a group's list. {n} is the number. */
+  names: { one: "{n} name", many: "{n} names" },
+  /** manage page (prototype/Manage.dc.html). */
+  manage: {
+    myGroups: "my groups",
+    eyebrow: "manage",
+    done: "✓",
+    names: {
+      title: "names",
+      sub: "{names} · {joined} joined",
+      list: "names",
+      you: "· you",
+      joined: "joined",
+      notJoined: "not joined",
+      wishlist: "wishlist",
+      noWishlist: "no wishlist",
+    },
+    rules: {
+      title: "rules",
+      sub: "who can’t give to whom (optional)",
+      none: "no rules. anyone can draw anyone.",
+    },
+    link: {
+      title: "game link",
+      sub: "copy it any time",
+      copy: "copy",
+      copied: "copied",
+      note: "share it in your group chat. nobody gets in without their name and pin.",
+    },
+    draw: {
+      title: "draw names",
+      sub: "once everyone has joined",
+      button: "draw names",
+      needThree: "add at least 3 people who are playing before you can draw.",
+      waitingFor: "waiting for {names} to join.",
+    },
+    exchange: {
+      title: "gift exchange",
+      sub: "at the party",
+      later: "opens after the draw.",
+    },
   },
   /** create group (prototype/CreateGroup.dc.html). {name} is filled in with the host's name as typed. */
   createGroup: {
