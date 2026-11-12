@@ -6,7 +6,7 @@ export default function Home() {
     <div className="screen">
       <SceneSky className="screen-sky" />
       <header className="screen-header">
-        <Wordmark word={copy.wordmark} href="/" />
+        <Wordmark word={copy.wordmark} mark="gift" href="/" />
       </header>
       <main className="screen-main home">
         <h1 className="headline">{copy.home.appName}</h1>
