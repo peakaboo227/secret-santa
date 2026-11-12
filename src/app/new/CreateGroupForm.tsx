@@ -31,6 +31,7 @@ export function CreateGroupForm() {
   const [hostName, setHostName] = useState("");
   const [playing, setPlaying] = useState(true);
   const [errors, setErrors] = useState<DetailsErrors & HostErrors>({});
+  const [saveFailed, setSaveFailed] = useState(false);
   const [saved, setSaved] = useState<{ groupId: string; pin: string } | null>(null);
   const [pending, startTransition] = useTransition();
   const today = localToday();
@@ -48,13 +49,15 @@ export function CreateGroupForm() {
     const found = checkHost(hostName);
     setErrors(found);
     if (hasErrors(found)) return;
+    setSaveFailed(false);
     startTransition(async () => {
       let result;
       try {
         result = await saveGroupAction({ groupId: saved?.groupId, groupName, budget, giftDay, hostName, playing });
       } catch (error) {
-        // No message for this in the prototype yet: stay on step 2 so the host can try again.
+        // Not in the prototype; wording approved by the product owner. Stay on step 2 to try again.
         console.error(error);
+        setSaveFailed(true);
         return;
       }
       if (result.ok) {
@@ -69,6 +72,7 @@ export function CreateGroupForm() {
 
   function back(to: 1 | 2) {
     setErrors({});
+    setSaveFailed(false);
     setStep(to);
   }
 
@@ -174,6 +178,7 @@ export function CreateGroupForm() {
           <button type="submit" className="pk-btn pk-btn-primary wide">
             {t.continue}
           </button>
+          {saveFailed ? <FieldError text={t.host.saveFailed} /> : null}
         </form>
       ) : null}
 

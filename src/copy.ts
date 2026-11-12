@@ -41,6 +41,7 @@ export const copy = {
       playing: "i’m playing too",
       playingNote:
         "you’ll get a pet, a wishlist and a giftee like everyone. you still can’t see who has who until the gift exchange.",
+      saveFailed: "couldn’t save the group. try again in a moment.",
       notPlayingNote: "your name stays on the list so you can sign in, but it’s left out of the draw: no wishlist, no giftee.",
     },
     pin: {
