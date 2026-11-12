@@ -5,6 +5,8 @@ Newest first. Each entry: what was decided, and why.
 ## 2026-11-12: wordmark
 
 - Every screen carries the `Wordmark` top-left with the word "secret santa" (from `copy.wordmark`), linking home, as the design system says. The setup brief's "skip Wordmark" is superseded.
+- The card's pip is a pixel gift (gold box, berry ribbon), not the design system's paw, as in the prototype
+  (`Wordmark mark="gift"`).
 
 ## 2026-11-12: project setup
 
