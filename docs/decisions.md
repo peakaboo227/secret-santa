@@ -2,6 +2,10 @@
 
 Newest first. Each entry: what was decided, and why.
 
+## 2026-11-12: pull request size
+
+- Trial: each user story is split into a few small pull requests, planned up front, instead of one PR per story. The product owner wanted to follow progress step by step. Half-built features stay unlinked on the live site until the story's last PR. To revisit after the first few stories.
+
 ## 2026-11-12: wordmark
 
 - Every screen carries the `Wordmark` top-left with the word "secret santa" (from `copy.wordmark`), linking home, as the design system says. The setup brief's "skip Wordmark" is superseded.
