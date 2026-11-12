@@ -73,7 +73,6 @@ export const copy = {
   /** meet your pet (prototype/MeetPet.dc.html). {pet} is the member's own pet name. */
   meetPet: {
     petLabel: "your pet",
-    eyebrow: "meet your pet",
     heading: "you’re {pet}",
     body: "your santa will see {pet} and your wishlist, never your name.",
     continue: "continue",

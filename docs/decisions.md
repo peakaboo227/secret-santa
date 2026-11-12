@@ -20,7 +20,8 @@ Newest first. Each entry: what was decided, and why.
   reuse it for participants. The host's choose your pet is at `/new/<group id>/pet`; its "back" reopens create
   group at "your pin" (`/new?group=<id>`), so going back never makes a second group.
 - **Wording changed by the product owner on the preview** (differs from the prototype on purpose): choose your
-  pet's heading is "choose your character" and its button is "yup, that’s me".
+  pet's heading is "choose your character" and its button is "yup, that’s me". Meet your pet has no small
+  "meet your pet" line above "you’re …".
 - **Gift day "not in the past"**: the browser checks the device's own today; the server only refuses a day that
   is over everywhere on earth, since it doesn't know the host's time zone.
 - **Prototype sizes without a boo token** (6, 12, 16, 18 px spacing, the 440px column, the 36px PIN) are named once

@@ -27,7 +27,6 @@ async function Meet({ params }: Pick<PageProps<"/g/[code]/meet">, "params">) {
     <Screen group={{ name: me.groupName, info: groupInfoLine(me.budget, me.giftDay) }}>
       <main className="dead-end">
         <Pet slug={me.pet} state="idle" size={120} label={t.petLabel} />
-        <span className="eyebrow muted">{t.eyebrow}</span>
         <h1 className="headline">{fill(t.heading, names)}</h1>
         <p className="body">{fill(t.body, names)}</p>
       </main>
